@@ -635,8 +635,9 @@
         <div class="privacy-notice-inner">
             <h2 id="privacyTitle" data-i18n="privacy_title">Informace o zpracování údajů z chatu</h2>
             <div>
-                <p data-i18n="privacy_storage">Text vašich zpráv a identifikátor relace ukládáme do Firebase Firestore, abychom mohli navázat na vaši poptávku.</p>
-                <p data-i18n="privacy_email">Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, odešleme přes EmailJS jednorázové upozornění s textem zprávy, kontaktem a identifikátorem relace.</p>
+                <p data-i18n="privacy_storage">Správcem osobních údajů je Ing. Jiří Kika, IČO 24513083, fyzická osoba podnikající dle živnostenského zákona. Texty chatových zpráv a identifikátor relace se ukládají ve Firebase Firestore po dobu 180 dní od vytvoření každé zprávy. Smazání přes TTL není okamžité a obvykle proběhne do 24 hodin po uplynutí lhůty.</p>
+                <p data-i18n="privacy_email">Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, odešleme přes EmailJS jednorázové upozornění s textem zprávy, kontaktem a identifikátorem relace. Kopie doručené do e-mailové schránky se touto lhůtou ve Firestore nemažou.</p>
+                <p data-i18n="privacy_language">Zvolený jazyk ukládáme v localStorage tohoto prohlížeče, dokud jeho data sami nesmažete.</p>
                 <p><span data-i18n="privacy_contact">Do chatu neposílejte údaje, které nejsou nutné k vyřízení dotazu. S dotazy nebo žádostmi o výmaz se obraťte na</span> <a href="mailto:info@kika-solutions.com">info@kika-solutions.com</a>.</p>
             </div>
         </div>
@@ -713,8 +714,9 @@
                 chat_messages: "Zprávy chatu",
                 privacy_link: "Informace o zpracování údajů",
                 privacy_title: "Informace o zpracování údajů z chatu",
-                privacy_storage: "Text vašich zpráv a identifikátor relace ukládáme do Firebase Firestore, abychom mohli navázat na vaši poptávku.",
-                privacy_email: "Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, odešleme přes EmailJS jednorázové upozornění s textem zprávy, kontaktem a identifikátorem relace.",
+                privacy_storage: "Správcem osobních údajů je Ing. Jiří Kika, IČO 24513083, fyzická osoba podnikající dle živnostenského zákona. Texty chatových zpráv a identifikátor relace se ukládají ve Firebase Firestore po dobu 180 dní od vytvoření každé zprávy. Smazání přes TTL není okamžité a obvykle proběhne do 24 hodin po uplynutí lhůty.",
+                privacy_email: "Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, odešleme přes EmailJS jednorázové upozornění s textem zprávy, kontaktem a identifikátorem relace. Kopie upozornění v e-mailové schránce uchováváme 180 dní od doručení.",
+                privacy_language: "Zvolený jazyk ukládáme v localStorage tohoto prohlížeče, dokud jeho data sami nesmažete.",
                 privacy_contact: "Do chatu neposílejte údaje, které nejsou nutné k vyřízení dotazu. S dotazy nebo žádostmi o výmaz se obraťte na",
                 chip_1: "IT Audit & Úspora nákladů",
                 chip_2: "Data Governance",
@@ -723,6 +725,8 @@
                 bot_intro: "Dobrý den, jsem asistent Jiřího Kiky. Potřebujete zefektivnit IT architekturu, zrevidovat licence, probrat řízení projektu nebo hledáte expertní kapacity?",
                 bot_contact_req: "Abychom vám mohli připravit konkrétní rozvahu nebo nezávaznou nabídku, zanechte mi prosím váš e-mail nebo telefon.",
                 bot_contact_ack: "Děkuji, kontakt ({contact}) jsem v pořádku zaznamenal a předal přímo Jiřímu Kikovi. Máte ještě jakýkoliv dotaz k auditu, architektuře nebo kapacitám?",
+                bot_email_failed: "Kontakt jsem uložil do chatu, ale e-mailové upozornění se nepodařilo odeslat. Napište prosím přímo na info@kika-solutions.com.",
+                bot_email_sent: "E-mailové upozornění s vaším kontaktem bylo odesláno.",
                 bot_fallback: "Rozumím. Informaci doplňuji k vaší poptávce. Jiří Kika vás bude brzy kontaktovat.",
                 bot_audit_md: "Audit IT pro středně velký tým (5-15 osob) obvykle zabere 8 až 16 MD podle rozsahu systémů a stavu dokumentace. Zahrnuje revizi licenčních nákladů (běžně identifikujeme 20-30% prostor pro úspory), zmapování technického dluhu a konkrétní TO-BE roadmapu.",
                 bot_audit_general: "IT Audit provádíme jako nezávislou revizi současného stavu (AS-IS). Zmapujeme zbytečně placené licence, zastaralý či předimenzovaný HW a neefektivní procesy. Cílem je uvolnit rozpočet pro smysluplnou modernizaci a zachovat funkční legacy systémy levně a bezpečně.",
@@ -766,8 +770,9 @@
                 chat_messages: "Chat messages",
                 privacy_link: "Data processing information",
                 privacy_title: "Chat data processing information",
-                privacy_storage: "The text of your messages and a session identifier are stored in Firebase Firestore so we can follow up on your inquiry.",
-                privacy_email: "If a message contains a recognized email address or phone number, a one-time notification with the message text, contact detail, and session identifier is sent via EmailJS.",
+                privacy_storage: "The data controller is Ing. Jiří Kika, company ID 24513083, a self-employed natural person under the Trade Licensing Act. Chat message text and the session identifier are stored in Firebase Firestore for 180 days from the creation of each message. TTL deletion is not immediate and typically occurs within 24 hours after that period.",
+                privacy_email: "If a message contains a recognized email address or phone number, a one-time notification with the message text, contact detail, and session identifier is sent via EmailJS. Copies of notifications in the email inbox are kept for 180 days from delivery.",
+                privacy_language: "The selected language is stored in this browser's localStorage until you clear its data.",
                 privacy_contact: "Do not share information in chat unless it is needed to handle your inquiry. For questions or deletion requests, contact",
                 chip_1: "IT Audit & Cost Optimization",
                 chip_2: "Data Governance",
@@ -776,6 +781,8 @@
                 bot_intro: "Hello, I am Jiří Kika's assistant. Do you need to streamline your IT architecture, review licenses, discuss project management, or are you looking for expert capacities?",
                 bot_contact_req: "To prepare a specific estimate or proposal, please leave your email or phone number here in the chat.",
                 bot_contact_ack: "Thank you, I have successfully recorded your contact ({contact}) and forwarded it to Jiří Kika. Do you have any specific questions about the audit, IT, or capacities?",
+                bot_email_failed: "Your contact was saved in the chat, but the email notification could not be sent. Please contact info@kika-solutions.com directly.",
+                bot_email_sent: "The email notification with your contact details has been sent.",
                 bot_fallback: "Understood. I am adding this information to your inquiry. Jiří Kika will contact you at the provided contact details soon.",
                 bot_audit_md: "An IT audit for a medium-sized team (5-15 people) typically takes 8 to 16 MDs depending on system complexity and documentation. It includes license cost reviews (identifying 20-30% potential savings), technical debt mapping, and a concrete TO-BE roadmap.",
                 bot_audit_general: "We conduct IT Audits as independent AS-IS evaluations. We identify wasteful software licenses, oversized hardware, and bottlenecks. Our goal is to free up your budget for meaningful modernization while keeping legacy services cheap and stable.",
@@ -830,11 +837,15 @@
 
         function logChatToFirebase(sender, text) {
             try {
+                const expirationDate = new Date();
+                expirationDate.setDate(expirationDate.getDate() + 180);
+
                 db.collection("chat_history").add({
                     sessionId: sessionId,
                     sender: sender,
                     message: text,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    expireAt: firebase.firestore.Timestamp.fromDate(expirationDate)
                 });
             } catch (error) {
                 console.error("Firebase log error:", error);
@@ -851,6 +862,8 @@
         let chatOpen = false;
         let hasContact = false;
         let emailNotificationSent = false;
+        let emailNotificationInProgress = false;
+        let emailNotificationPromise = Promise.resolve(false);
         let isFirstMessage = true;
 
         function toggleChat() {
@@ -900,14 +913,22 @@
         }
 
         function sendEmailNotification(userMessage, contactInfo) {
-            emailjs.send("service_kc6r25e", "template_za7h1om", {
-                message: userMessage,
-            contact_info: contactInfo,
-                session_id: sessionId
-            }).then(
-                response => console.log('Email úspěšně odeslán!', response.status, response.text),
-                error => console.error('Chyba odeslání emailu:', error)
-            );
+            try {
+                return emailjs.send("service_kc6r25e", "template_za7h1om", {
+                    message: userMessage,
+                    contact_info: contactInfo,
+                    session_id: sessionId
+                }).then(response => {
+                    console.log('Email úspěšně odeslán!', response.status, response.text);
+                    return true;
+                }).catch(error => {
+                    console.error('Chyba odeslání emailu:', error);
+                    return false;
+                });
+            } catch (error) {
+                console.error('Chyba odeslání emailu:', error);
+                return Promise.resolve(false);
+            }
         }
 
         function sendMessage() {
@@ -922,9 +943,18 @@
             const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
             const phoneMatch = text.match(/(\+?\d{3})?[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{3}/);
             const contactMatch = emailMatch || phoneMatch;
-            if (contactMatch && !emailNotificationSent) {
-                emailNotificationSent = true;
-                sendEmailNotification(text, contactMatch[0]);
+            if (contactMatch && !emailNotificationSent && !emailNotificationInProgress) {
+                emailNotificationInProgress = true;
+                emailNotificationPromise = sendEmailNotification(text, contactMatch[0]);
+                emailNotificationPromise.then(sent => {
+                    emailNotificationInProgress = false;
+                    if (sent) {
+                        emailNotificationSent = true;
+                        if (hasContact) appendMessage('Asistent', translations[currentLang].bot_email_sent, 'assistant');
+                    } else {
+                        appendMessage('Asistent', translations[currentLang].bot_email_failed, 'assistant');
+                    }
+                });
             }
             
             // 2. Detekce témat
@@ -944,8 +974,12 @@
                 if ((emailMatch || phoneMatch) && !hasContact) {
                     hasContact = true;
                     const contactDetail = emailMatch ? emailMatch[0] : phoneMatch[0];
-                    let ackMsg = t.bot_contact_ack.replace('{contact}', contactDetail);
-                    appendMessage('Asistent', ackMsg, 'assistant');
+                    emailNotificationPromise.then(sent => {
+                        if (sent) {
+                            const ackMsg = t.bot_contact_ack.replace('{contact}', contactDetail);
+                            appendMessage('Asistent', ackMsg, 'assistant');
+                        }
+                    });
                     return;
                 }
 
