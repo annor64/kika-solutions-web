@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiří Kika | Kika Solutions - Enterprise Architecture & IT</title>
+    <style>
+        :root {
+            --bg-main: #0a0a0c;
+            --bg-card: #121217;
+            --bg-card-hover: #1a1a24;
+            --accent-cyan: #00f0ff;
+            --accent-blue: #0070f3;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient-accent: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center top;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            color: var(--accent-cyan);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.3rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: #000;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Header / Hero */
+        .hero {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .text-gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Executive Summary */
+        .executive-summary {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .executive-summary h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .executive-summary ul {
+            list-style: none;
+        }
+
+        .executive-summary li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .executive-summary li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Capacity Sourcing Banner */
+        .capacity-banner {
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(0, 112, 243, 0.05) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+        
+        .capacity-banner h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .capacity-banner p {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
+        }
+        
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            margin: 0 auto;
+            display: inline-flex;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: var(--bg-main);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            text-decoration: none;
+            transition: border-color 0.2s;
+        }
+        
+        .footer-contact-item:hover {
+            border-color: var(--accent-cyan);
+        }
+
+        /* Chatbot UI */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 112, 243, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-toggle svg {
+            width: 30px;
+            height: 30px;
+            fill: #000;
+        }
+
+        .chat-container {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 550px;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 1.2rem;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header-title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            white-space: pre-wrap;
+        }
+
+        .msg-assistant {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .msg-user {
+            background: var(--accent-blue);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-suggestions {
+            padding: 0 1.5rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .suggestion-chip {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .suggestion-chip:hover {
+            border-color: var(--accent-cyan);
+            color: var(--text-main);
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 0.5rem;
+            background: var(--bg-card);
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .chat-input-area input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .chat-input-area button {
+            background: var(--gradient-accent);
+            border: none;
+            width: 45px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-input-area button svg {
+            width: 20px;
+            height: 20px;
+            fill: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-box">JK</div>
+            <div>
+                KIKA SOLUTIONS<br>
+                <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 400;">Enterprise Architecture & IT</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('cs')" id="btn-cs">CS</button>
+                <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+            </div>
+            <button class="btn-primary" onclick="toggleChat()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span data-i18n="nav_chat">Konzultovat s asistentem</span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 data-i18n="hero_title">Propojuji strategii,<br>architekturu a <span class="text-gradient">reálnou dodávku.</span></h1>
+        <p data-i18n="hero_desc">Jsem seniorní IT & business konzultant. Zajišťuji nezávislý audit IT, navrhuji efektivní architekturu a optimalizuji zdroje. Pomohu vám zachovat funkční legacy systémy levně a modernizovat tam, kde to dává byznysový smysl.</p>
+        
+        <div class="executive-summary">
+            <h3 data-i18n="exec_title">Executive Summary</h3>
+            <ul>
+                <li data-i18n="exec_1"><strong>Nezávislý pohled:</strong> Konec předražených licencí a nákupů nesmyslného hardware. Navrhuji architekturu tak, aby pracovala pro váš zisk, ne pro dodavatele.</li>
+                <li data-i18n="exec_2"><strong>Transformace & Legacy:</strong> Propojení moderních cloudových a datových světů se staršími (legacy) podnikovými systémy bez výpadků provozu.</li>
+                <li data-i18n="exec_3"><strong>Metodiky & Praxe:</strong> Certifikace TOGAF 9, PRINCE2 a ITIL. Léta zkušeností z velkých korporací a komplexních transformačních programů.</li>
+                <li data-i18n="exec_4"><strong>Data & Procesy:</strong> Návrh datových skladů, Azure Data Lakehouse a automatizace firemních procesů pomocí moderních nástrojů.</li>
+            </ul>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 data-i18n="srv1_title">IT Audit & Optimalizace nákladů</h3>
+                <p data-i18n="srv1_desc">Revize současného stavu (AS-IS). Zmapování zbytečných nákladů na licence a zastaralý hardware. Návrh štíhlého cílového stavu (TO-BE), který šetří rozpočet.</p>
+            </div>
+            <div class="service-card">
+                <h3 data-i18n="srv2_title">Enterprise Architektura</h3>
+                <p data-i18n="srv2_desc">Vytvoření IT roadmapy, definování standardů a řízení technického dluhu. Sladění business požadavků s reálnými možnostmi vývoje.</p>
+            </div>
+            <div class="service-card">
+                <h3 data-i18n="srv3_title">Data Governance & Datové sklady</h3>
+                <p data-i18n="srv3_desc">Kvalita dat, metadata, Azure Data Lakehouse, Databricks a integrace (EDI) pro zajištění spolehlivého reportingu pro management.</p>
+            </div>
+            <div class="service-card">
+                <h3 data-i18n="srv4_title">Řízení IT projektů</h3>
+                <p data-i18n="srv4_desc">Koordinace dodavatelů, řízení rozsahu, rozpočtu a rizik. Nastavení jasné governance a transparentního reportingu pro představenstvo.</p>
+            </div>
+            <div class="service-card">
+                <h3 data-i18n="srv5_title">Dohled nad SAP programy</h3>
+                <p data-i18n="srv5_desc">Architektonický dohled nad implementacemi (S/4HANA, ECC). Ochrana klienta před vendor-lockem a zbytečnými úpravami standardu.</p>
+            </div>
+            <div class="service-card">
+                <h3 data-i18n="srv6_title">Workstation Engineering & Custom HW</h3>
+                <p data-i18n="srv6_desc">Návrh a sizing dedikovaných výpočetních stanic a serverů. Eliminace nevhodně předimenzovaného hardware a stavba odladěných uzlů přesně na míru podnikovým zátěžím.</p>
+            </div>
+        </div>
+        
+        <div class="capacity-banner">
+            <h3 data-i18n="cap_title">Chybí vám zkušení IT specialisté?</h3>
+            <p data-i18n="cap_desc">Kromě mých vlastních architektonických kapacit dokáži díky letité praxi zajistit prověřené IT experty – od seniorních vývojářů přes SAP konzultanty, datové inženýry až po krizové projektové manažery.</p>
+            <button class="btn-primary btn-large" onclick="openChatWithSuggestion('cap')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                <span data-i18n="cap_btn">Poptat expertní kapacity</span>
+            </button>
+        </div>
+    </section>
+
+    <footer>
+        <div>© 2026 Kika Solutions. <span data-i18n="footer_rights">Všechna práva vyhrazena.</span></div>
+        <div class="footer-contacts">
+            <a href="mailto:info@kika-solutions.com" class="footer-contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                info@kika-solutions.com
+            </a>
+            <a href="tel:+420732263184" class="footer-contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                +420 732 263 184
+            </a>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chat-widget">
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header">
+                <div class="chat-header-title">
+                    <div class="status-dot"></div>
+                    <span data-i18n="chat_title">Kika Solutions Asistent</span>
+                </div>
+                <button class="close-chat" onclick="toggleChat()">✕</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-suggestions" id="chatSuggestions">
+                <div class="suggestion-chip" onclick="sendSuggestion(translations[currentLang].chip_1)" data-i18n="chip_1">IT Audit & Úspora nákladů</div>
+                <div class="suggestion-chip" onclick="sendSuggestion(translations[currentLang].chip_2)" data-i18n="chip_2">Data Governance</div>
+                <div class="suggestion-chip" onclick="sendSuggestion(translations[currentLang].chip_3)" data-i18n="chip_3">Enterprise Architektura</div>
+                <div class="suggestion-chip" onclick="sendSuggestion(translations[currentLang].chip_4)" data-i18n="chip_4">Workstation Engineering</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Napište zprávu nebo zanechte kontakt..." data-i18n-placeholder="chat_input" onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">
+                    <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                </button>
+            </div>
+        </div>
+        <button class="chat-toggle" onclick="toggleChat()" id="chatToggleBtn">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        </button>
+    </div>
+
+    <!-- FIREBASE COMPAT LIBRARIES -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        // --- MULTILANGUAGE DICTIONARY ---
+        const translations = {
+            cs: {
+                nav_chat: "Konzultovat s asistentem",
+                hero_title: "Propojuji strategii,<br>architekturu a <span class='text-gradient'>reálnou dodávku.</span>",
+                hero_desc: "Jsem seniorní IT & business konzultant. Zajišťuji nezávislý audit IT, navrhuji efektivní architekturu a optimalizuji zdroje. Pomohu vám zachovat funkční legacy systémy levně a modernizovat tam, kde to dává byznysový smysl.",
+                exec_title: "Executive Summary",
+                exec_1: "<strong>Nezávislý pohled:</strong> Konec předražených licencí a nákupů nesmyslného hardware. Navrhuji architekturu tak, aby pracovala pro váš zisk, ne pro dodavatele.",
+                exec_2: "<strong>Transformace & Legacy:</strong> Propojení moderních cloudových a datových světů se staršími (legacy) podnikovými systémy bez výpadků provozu.",
+                exec_3: "<strong>Metodiky & Praxe:</strong> Certifikace TOGAF 9, PRINCE2 a ITIL. Léta zkušeností z velkých korporací a komplexních transformačních programů.",
+                exec_4: "<strong>Data & Procesy:</strong> Návrh datových skladů, Azure Data Lakehouse a automatizace firemních procesů pomocí moderních nástrojů.",
+                srv1_title: "IT Audit & Optimalizace nákladů",
+                srv1_desc: "Revize současného stavu (AS-IS). Zmapování zbytečných nákladů na licence a zastaralý hardware. Návrh štíhlého cílového stavu (TO-BE), který šetří rozpočet.",
+                srv2_title: "Enterprise Architektura",
+                srv2_desc: "Vytvoření IT roadmapy, definování standardů a řízení technického dluhu. Sladění business požadavků s reálnými možnostmi vývoje.",
+                srv3_title: "Data Governance & Datové sklady",
+                srv3_desc: "Kvalita dat, metadata, Azure Data Lakehouse, Databricks a integrace (EDI) pro zajištění spolehlivého reportingu pro management.",
+                srv4_title: "Řízení IT projektů",
+                srv4_desc: "Koordinace dodavatelů, řízení rozsahu, rozpočtu a rizik. Nastavení jasné governance a transparentního reportingu pro představenstvo.",
+                srv5_title: "Dohled nad SAP programy",
+                srv5_desc: "Architektonický dohled nad implementacemi (S/4HANA, ECC). Ochrana klienta před vendor-lockem a zbytečnými úpravami standardu.",
+                srv6_title: "Workstation Engineering & Custom HW",
+                srv6_desc: "Návrh a sizing dedikovaných výpočetních stanic a serverů. Eliminace nevhodně předimenzovaného hardware a stavba odladěných uzlů přesně na míru podnikovým zátěžím.",
+                cap_title: "Chybí vám zkušení IT specialisté?",
+                cap_desc: "Kromě mých vlastních architektonických kapacit dokáži díky letité praxi zajistit prověřené IT experty – od seniorních vývojářů přes SAP konzultanty, datové inženýry až po krizové projektové manažery.",
+                cap_btn: "Poptat expertní kapacity",
+                cap_chip: "Hledám prověřené IT experty/kapacity do týmu",
+                footer_rights: "Všechna práva vyhrazena.",
+                chat_title: "Kika Solutions Asistent",
+                chat_input: "Napište zprávu nebo zanechte kontakt...",
+                chip_1: "IT Audit & Úspora nákladů",
+                chip_2: "Data Governance",
+                chip_3: "Enterprise Architektura",
+                chip_4: "Workstation Engineering",
+                bot_intro: "Dobrý den, jsem asistent Jiřího Kiky. Potřebujete zefektivnit IT architekturu, zrevidovat licence, probrat řízení projektu nebo hledáte expertní kapacity?",
+                bot_contact_req: "Abychom vám mohli připravit konkrétní rozvahu nebo nezávaznou nabídku, zanechte mi prosím váš e-mail nebo telefon.",
+                bot_contact_ack: "Děkuji, kontakt ({contact}) jsem v pořádku zaznamenal a předal přímo Jiřímu Kikovi. Máte ještě jakýkoliv dotaz k auditu, architektuře nebo kapacitám?",
+                bot_fallback: "Rozumím. Informaci doplňuji k vaší poptávce. Jiří Kika vás bude brzy kontaktovat.",
+                bot_audit_md: "Audit IT pro středně velký tým (5-15 osob) obvykle zabere 8 až 16 MD podle rozsahu systémů a stavu dokumentace. Zahrnuje revizi licenčních nákladů (běžně identifikujeme 20-30% prostor pro úspory), zmapování technického dluhu a konkrétní TO-BE roadmapu.",
+                bot_audit_general: "IT Audit provádíme jako nezávislou revizi současného stavu (AS-IS). Zmapujeme zbytečně placené licence, zastaralý či předimenzovaný HW a neefektivní procesy. Cílem je uvolnit rozpočet pro smysluplnou modernizaci a zachovat funkční legacy systémy levně a bezpečně.",
+                bot_data_general: "V oblasti Data Governance řešíme jednotnou pravdu o datech. Navrhujeme moderní Azure Data Lakehouse architekturu, Databricks a spolehlivé integrace (např. EDI), aby mělo vedení firmy k dispozici čistá data pro reporting a AI bez ručních excelovských zásahů.",
+                bot_arch_general: "Enterprise architekturu stavíme na standardech TOGAF 9 a ITIL. Sladíme byznys strategii s možnostmi IT, řídíme technický dluh a poskytujeme nezávislý dohled nad implementacemi (včetně SAP S/4HANA), abyste se vyhnuli vendor-locku.",
+                bot_hw_general: "U Workstation Engineeringu a Custom HW děláme přesný sizing. Místo předražených typových sestav navrhneme a odladíme výpočetní stanice a servery přesně podle vašich konkrétních aplikací s důrazem na spolehlivost, tichý chod a maximální poměr cena/výkon.",
+                bot_cap_general: "Díky rozsáhlé síti seniorních IT kontaktů zajišťujeme prověřené experty – od enterprise architektů, přes senior vývojáře a data engineery, až po SAP konzultanty a krizové PM.",
+                bot_pushback: "Rozumím, omlouvám se. Můžete kontakt napsat přímo sem, až se vám to bude hodit, případně se můžete kdykoliv přímo spojit s Jiřím Kikou na telefonu +420 732 263 184."
+            },
+            en: {
+                nav_chat: "Consult with Assistant",
+                hero_title: "Bridging strategy,<br>architecture and <span class='text-gradient'>real delivery.</span>",
+                hero_desc: "I am a senior IT & business consultant. I provide independent IT audits, design efficient architecture, and optimize resources. I help you maintain functional legacy systems cost-effectively while modernizing where it makes business sense.",
+                exec_title: "Executive Summary",
+                exec_1: "<strong>Independent View:</strong> The end of overpriced licenses and pointless hardware purchases. I design architecture to work for your profit, not the vendors'.",
+                exec_2: "<strong>Transformation & Legacy:</strong> Bridging modern cloud and data worlds with older legacy enterprise systems without downtime.",
+                exec_3: "<strong>Methodologies & Practice:</strong> TOGAF 9, PRINCE2, and ITIL certified. Years of experience from large corporations and complex transformation programs.",
+                exec_4: "<strong>Data & Processes:</strong> Design of data warehouses, Azure Data Lakehouse, and corporate process automation using modern tools.",
+                srv1_title: "IT Audit & Cost Optimization",
+                srv1_desc: "Review of the current state (AS-IS). Mapping unnecessary costs for licenses and outdated hardware. Design of a lean target state (TO-BE) that saves budget.",
+                srv2_title: "Enterprise Architecture",
+                srv2_desc: "Creation of IT roadmaps, defining standards, and managing technical debt. Aligning business requirements with real development capabilities.",
+                srv3_title: "Data Governance & Warehouses",
+                srv3_desc: "Data quality, metadata, Azure Data Lakehouse, Databricks, and integration (EDI) to ensure reliable reporting for management.",
+                srv4_title: "IT Project Management",
+                srv4_desc: "Vendor coordination, scope, budget, and risk management. Setting up clear governance and transparent reporting for the board.",
+                srv5_title: "SAP Program Oversight",
+                srv5_desc: "Architectural oversight of implementations (S/4HANA, ECC). Protecting the client from vendor lock-in and unnecessary standard modifications.",
+                srv6_title: "Workstation Engineering & Custom HW",
+                srv6_desc: "Design and sizing of dedicated computing stations and servers. Eliminating poorly oversized hardware and building nodes tailored perfectly to enterprise workloads.",
+                cap_title: "Missing experienced IT specialists?",
+                cap_desc: "In addition to my own architectural capacities, my years of practice allow me to source proven IT experts – from senior developers to SAP consultants, data engineers, and crisis project managers.",
+                cap_btn: "Request Expert Capacities",
+                cap_chip: "I am looking for proven IT experts for our team",
+                footer_rights: "All rights reserved.",
+                chat_title: "Kika Solutions Assistant",
+                chat_input: "Type a message or leave contact...",
+                chip_1: "IT Audit & Cost Optimization",
+                chip_2: "Data Governance",
+                chip_3: "Enterprise Architecture",
+                chip_4: "Workstation Engineering",
+                bot_intro: "Hello, I am Jiří Kika's assistant. Do you need to streamline your IT architecture, review licenses, discuss project management, or are you looking for expert capacities?",
+                bot_contact_req: "To prepare a specific estimate or proposal, please leave your email or phone number here in the chat.",
+                bot_contact_ack: "Thank you, I have successfully recorded your contact ({contact}) and forwarded it to Jiří Kika. Do you have any specific questions about the audit, IT, or capacities?",
+                bot_fallback: "Understood. I am adding this information to your inquiry. Jiří Kika will contact you at the provided contact details soon.",
+                bot_audit_md: "An IT audit for a medium-sized team (5-15 people) typically takes 8 to 16 MDs depending on system complexity and documentation. It includes license cost reviews (identifying 20-30% potential savings), technical debt mapping, and a concrete TO-BE roadmap.",
+                bot_audit_general: "We conduct IT Audits as independent AS-IS evaluations. We identify wasteful software licenses, oversized hardware, and bottlenecks. Our goal is to free up your budget for meaningful modernization while keeping legacy services cheap and stable.",
+                bot_data_general: "In Data Governance, we establish a single source of truth. We design Azure Data Lakehouse architectures, Databricks pipelines, and EDI integrations so leadership has accurate data without manual Excel manipulations.",
+                bot_arch_general: "We build Enterprise Architecture upon TOGAF 9 and ITIL frameworks. We align business strategy with IT capabilities, mitigate technical debt, and oversee large enterprise systems (like SAP S/4HANA) to prevent vendor lock-in.",
+                bot_hw_general: "For Workstation Engineering, we size hardware precisely for specific enterprise workloads. Instead of overpriced boxed units, we design tuned nodes with the ideal price/performance ratio.",
+                bot_cap_general: "Through a vetted network of senior IT professionals, we supply seasoned experts – enterprise architects, senior engineers, data specialists, SAP consultants, and crisis PMs.",
+                bot_pushback: "I understand, my apologies. You can share your contact whenever convenient, or reach Jiří Kika directly by phone at +420 732 263 184."
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'cs';
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            
+            document.getElementById('btn-cs').classList.toggle('active', lang === 'cs');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) el.placeholder = translations[lang][key];
+            });
+        }
+
+        // --- FIREBASE SETUP ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyC1Dh2JbV6UmpvRqHiR-FrQyRXFYmfzRWA",
+            authDomain: "kika-chat.firebaseapp.com",
+            projectId: "kika-chat",
+            storageBucket: "kika-chat.firebasestorage.app",
+            messagingSenderId: "128646324567",
+            appId: "1:128646324567:web:0d4eaaba7a05ec41f39e12"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const sessionId = "chat_" + Date.now() + "_" + Math.random().toString(36).substr(2, 5);
+
+        function logChatToFirebase(sender, text) {
+            try {
+                db.collection("chat_history").add({
+                    sessionId: sessionId,
+                    sender: sender,
+                    message: text,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } catch (error) {
+                console.error("Firebase log error:", error);
+            }
+        }
+
+        // --- CHAT ENGINE S KONTEXTOVOU PAMĚTÍ ---
+        const chatContainer = document.getElementById('chatContainer');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSuggestions = document.getElementById('chatSuggestions');
+        let chatOpen = false;
+        let hasContact = false;
+        let isFirstMessage = true;
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            chatContainer.style.display = chatOpen ? 'flex' : 'none';
+            if (chatOpen) {
+                chatInput.focus();
+                if (isFirstMessage) {
+                    appendMessage('Asistent', translations[currentLang].bot_intro, 'assistant');
+                    isFirstMessage = false;
+                }
+            }
+        }
+
+        function openChatWithSuggestion(type) {
+            if (!chatOpen) toggleChat();
+            setTimeout(() => {
+                if (type === 'cap') {
+                    sendSuggestion(translations[currentLang].cap_chip);
+                }
+            }, 300);
+        }
+
+        function appendMessage(sender, text, role) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message msg-${role}`;
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            logChatToFirebase(sender, text);
+        }
+
+        function sendSuggestion(text) {
+            chatInput.value = text;
+            sendMessage();
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            appendMessage('Klient', text, 'user');
+            chatInput.value = '';
+            chatSuggestions.style.display = 'none';
+
+            // 1. Detekce kontaktů (email nebo telefon)
+            const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+            const phoneMatch = text.match(/(\+?\d{3})?[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{3}/);
+            
+            // 2. Detekce témat
+            const lowerText = text.toLowerCase();
+            const asksForMD = lowerText.includes("md") || lowerText.includes("mandays") || lowerText.includes("odhad") || lowerText.includes("estimate") || lowerText.includes("5 - 15") || lowerText.includes("5-15");
+            const asksForAudit = lowerText.includes("audit") || lowerText.includes("licenc");
+            const asksForData = lowerText.includes("data") || lowerText.includes("sklad") || lowerText.includes("governance") || lowerText.includes("databricks");
+            const asksForArch = lowerText.includes("architekt") || lowerText.includes("togaf") || lowerText.includes("sap");
+            const asksForHW = lowerText.includes("hw") || lowerText.includes("workstation") || lowerText.includes("hardware") || lowerText.includes("server");
+            const asksForCap = lowerText.includes("kapacit") || lowerText.includes("expert") || lowerText.includes("specialist") || lowerText.includes("tým") || lowerText.includes("team");
+            const pushback = lowerText.includes("nebude") || lowerText.includes("nemá") || lowerText.includes("nemam") || lowerText.includes("nechci");
+
+            setTimeout(() => {
+                const t = translations[currentLang];
+
+                // A) Uživatel zadal kontakt
+                if ((emailMatch || phoneMatch) && !hasContact) {
+                    hasContact = true;
+                    const contactDetail = emailMatch ? emailMatch[0] : phoneMatch[0];
+                    let ackMsg = t.bot_contact_ack.replace('{contact}', contactDetail);
+                    appendMessage('Asistent', ackMsg, 'assistant');
+                    return;
+                }
+
+                // B) Reakce na odmlouvání ("nemá email")
+                if (pushback && !hasContact) {
+                    appendMessage('Asistent', t.bot_pushback, 'assistant');
+                    return;
+                }
+
+                // C) MD odhad auditu
+                if (asksForMD) {
+                    appendMessage('Asistent', t.bot_audit_md, 'assistant');
+                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
+                    return;
+                }
+
+                // D) Audit & licence (včetně kliknutí na čip)
+                if (asksForAudit) {
+                    appendMessage('Asistent', t.bot_audit_general, 'assistant');
+                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
+                    return;
+                }
+
+                // E) Data Governance & Sklady
+                if (asksForData) {
+                    appendMessage('Asistent', t.bot_data_general, 'assistant');
+                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
+                    return;
+                }
+
+                // F) Enterprise Architektura
+                if (asksForArch) {
+                    appendMessage('Asistent', t.bot_arch_general, 'assistant');
+                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
+                    return;
+                }
+
+                // G) Workstation Engineering / HW
+                if (asksForHW) {
+                    appendMessage('Asistent', t.bot_hw_general, 'assistant');
+                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
+                    return;
+                }
+
+                // H) Expertní kapacity
+                if (asksForCap) {
+                    appendMessage('Asistent', t.bot_cap_general, 'assistant');
+                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
+                    return;
+                }
+
+                // I) Standardní fallback
+                if (hasContact) {
+                    appendMessage('Asistent', t.bot_fallback, 'assistant');
+                } else {
+                    appendMessage('Asistent', t.bot_contact_req, 'assistant');
+                }
+            }, 700);
+        }
+
+        // Init language on load
+        setLang(currentLang);
+    </script>
+</body>
+</html>
