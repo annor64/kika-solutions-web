@@ -53,18 +53,48 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: -0.5px;
+            gap: 0.85rem;
         }
 
         .logo-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 0.8rem;
-            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            flex: 0 0 44px;
+            width: 44px;
+            height: 44px;
+            border-radius: 4px;
+            background: var(--accent-cyan);
+            color: var(--bg-main);
+            font-size: 0.95rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .logo-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .logo-name {
+            display: flex;
+            align-items: baseline;
+            gap: 0.35rem;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-weight: 750;
+            line-height: 1;
+        }
+
+        .logo-name span {
             color: var(--accent-cyan);
+        }
+
+        .logo-tagline {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 400;
+            line-height: 1.2;
         }
 
         .nav-actions {
@@ -121,16 +151,16 @@
 
         /* Header / Hero */
         .hero {
-            padding: 6rem 5%;
-            max-width: 1200px;
+            padding: 4.5rem 5%;
+            max-width: 1320px;
             margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.25rem;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1.5px;
+            margin-bottom: 1rem;
+            max-width: 15ch;
         }
 
         .text-gradient {
@@ -139,46 +169,284 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
+        .hero-description {
             color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 650px;
-            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+            max-width: 54ch;
+            margin-bottom: 1.5rem;
         }
 
-        /* Executive Summary */
-        .executive-summary {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 4rem;
+        .hero-showcase {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            align-items: center;
+            gap: 3.5rem;
+            min-height: 390px;
+            margin-bottom: 4.5rem;
         }
-        
-        .executive-summary h3 {
+
+        .hero-kicker,
+        .demo-eyebrow {
             color: var(--accent-cyan);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .executive-summary ul {
-            list-style: none;
+        .hero-kicker {
+            margin-bottom: 1rem;
         }
 
-        .executive-summary li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 1.25rem;
+        }
+
+        .hero-secondary {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-underline-offset: 4px;
+        }
+
+        .architecture-demo {
+            min-width: 0;
+            padding: 1.35rem;
+            border: 1px solid rgba(0, 240, 255, 0.22);
+            background: rgba(13, 17, 22, 0.94);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+        }
+
+        .demo-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .demo-eyebrow {
             color: var(--text-muted);
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.68rem;
         }
 
-        .executive-summary li::before {
-            content: "→";
+        .demo-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--accent-cyan);
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.65rem;
+            white-space: nowrap;
+        }
+
+        .demo-status::before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            content: "";
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .demo-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.35rem;
+            margin-bottom: 1.25rem;
+            padding: 0.25rem;
+            border: 1px solid var(--border-color);
+            background: #08090b;
+        }
+
+        .demo-tab {
+            min-height: 38px;
+            border: 0;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 650;
+            cursor: pointer;
+        }
+
+        .demo-tab[aria-pressed="true"] {
+            background: rgba(0, 240, 255, 0.12);
+            color: var(--accent-cyan);
+        }
+
+        .demo-tab:focus-visible {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 2px;
+        }
+
+        .demo-flow {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.65rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .demo-flow::before {
             position: absolute;
-            left: 0;
-            color: var(--accent-blue);
+            top: 50%;
+            right: 8%;
+            left: 8%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-cyan), transparent);
+            content: "";
+        }
+
+        .demo-node {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            min-height: 88px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            background: #0c0e12;
+        }
+
+        .demo-node.is-active {
+            border-color: rgba(0, 240, 255, 0.55);
+            background: #10191d;
+        }
+
+        .demo-node-index {
+            color: var(--accent-cyan);
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.65rem;
+        }
+
+        .demo-node-label {
+            color: var(--text-main);
+            font-size: 0.78rem;
+            font-weight: 650;
+            line-height: 1.3;
+        }
+
+        .demo-insight {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 0.75rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .demo-insight-mark {
+            color: var(--accent-cyan);
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.8rem;
+        }
+
+        .demo-insight p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        .demo-disclaimer {
+            margin: 0.75rem 0 0;
+            color: #66717c;
+            font-size: 0.68rem;
+        }
+
+        .profile-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+            align-items: center;
+            gap: 3rem;
+            padding: 0 0 2.5rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-copy {
+            min-width: 0;
+        }
+
+        .profile-name {
+            width: fit-content;
+            margin: 0 0 0.9rem;
+            color: var(--text-main);
+            font-size: 2rem;
+            font-weight: 750;
+            line-height: 1.05;
+        }
+
+        .profile-name::after {
+            display: block;
+            width: 2rem;
+            height: 3px;
+            margin-top: 0.55rem;
+            background: var(--accent-cyan);
+            content: "";
+        }
+
+        .profile-summary {
+            max-width: 62ch;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .profile-link {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-underline-offset: 4px;
+        }
+
+        .profile-facts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-width: 520px;
+            margin-top: 1.75rem;
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+        }
+
+        .profile-portrait {
+            width: min(100%, 360px);
+            aspect-ratio: 1;
+            justify-self: end;
+        }
+
+        .profile-portrait img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .profile-fact {
+            min-height: 78px;
+            padding: 0.85rem 1rem;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-fact strong,
+        .profile-fact span {
+            display: block;
+        }
+
+        .profile-fact strong {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .profile-fact span {
+            margin-top: 0.25rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
         }
 
         /* Services Grid */
@@ -212,6 +480,83 @@
         .service-card p {
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        .career-section {
+            margin-bottom: 3rem;
+        }
+
+        .career-section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-section-heading h2 {
+            color: var(--text-main);
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .career-section-heading p {
+            max-width: 48ch;
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        .project-entry {
+            min-width: 0;
+            padding: 1.25rem 0 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .project-role,
+        .project-tech {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .project-entry h3 {
+            margin: 0.35rem 0;
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .project-role {
+            margin: 0 0 0.6rem;
+            font-weight: 600;
+        }
+
+        .project-entry p:last-child {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .credentials-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.5rem;
+            padding: 1rem 0 2.5rem;
+            margin-bottom: 3rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .credentials-strip strong {
+            color: var(--text-main);
         }
         
         /* Capacity Sourcing Banner */
@@ -293,22 +638,25 @@
 
         .privacy-notice {
             border-top: 1px solid var(--border-color);
-            padding: 2rem 5%;
+            padding: 2rem 5% 6rem;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
         .privacy-notice-inner {
-            display: grid;
-            grid-template-columns: minmax(200px, 0.65fr) minmax(0, 1.5fr);
-            gap: 2rem;
-            max-width: 1200px;
+            max-width: 780px;
             margin: 0 auto;
         }
 
         .privacy-notice h2 {
             color: var(--text-main);
             font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-notice p {
+            max-width: 72ch;
+            line-height: 1.55;
         }
 
         .privacy-notice p + p {
@@ -510,12 +858,126 @@
                 gap: 1rem;
             }
 
+            .hero {
+                padding: 3rem 16px;
+            }
+
+            .hero-showcase {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 1.75rem;
+                min-height: 0;
+                margin-bottom: 3rem;
+            }
+
             .hero h1 {
-                font-size: 2.25rem;
-                letter-spacing: 0;
+                max-width: 18ch;
+                font-size: 2.35rem;
+            }
+
+            .architecture-demo {
+                padding: 1rem;
+            }
+
+            .demo-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.55rem;
+            }
+
+            .demo-status {
+                white-space: normal;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .hero-actions .btn-primary {
+                flex: 0 0 auto;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .demo-flow {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.5rem;
+            }
+
+            .demo-flow::before {
+                top: 8%;
+                right: auto;
+                bottom: 8%;
+                left: 1.15rem;
+                width: 1px;
+                height: auto;
+                background: linear-gradient(180deg, transparent, var(--accent-blue), var(--accent-cyan), transparent);
+            }
+
+            .demo-node {
+                min-height: 56px;
+                padding-left: 2.5rem;
+            }
+
+            .profile-intro {
+                grid-template-columns: 112px minmax(0, 1fr);
+                align-items: start;
+                gap: 0.85rem 1rem;
+                padding-bottom: 2rem;
+            }
+
+            .profile-copy {
+                display: contents;
+            }
+
+            .profile-name {
+                grid-column: 2;
+                grid-row: 1;
+                align-self: center;
+                margin: 0;
+                font-size: 1.2rem;
+                line-height: 1.15;
+            }
+
+            .profile-name::after {
+                width: 1.5rem;
+                height: 2px;
+                margin-top: 0.35rem;
+            }
+
+            .profile-summary,
+            .profile-link,
+            .profile-facts {
+                grid-column: 1 / -1;
+            }
+
+            .profile-summary {
+                margin: 0;
+            }
+
+            .profile-portrait {
+                grid-column: 1;
+                grid-row: 1;
+                width: 112px;
+                justify-self: start;
+                margin: 0;
+            }
+
+            .profile-facts {
+                margin-top: 1.25rem;
             }
 
             .services-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .career-section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .project-grid {
                 grid-template-columns: minmax(0, 1fr);
             }
 
@@ -536,10 +998,6 @@
                 gap: 1rem;
             }
 
-            .privacy-notice-inner {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
         }
     </style>
 </head>
@@ -548,9 +1006,9 @@
     <nav>
         <div class="logo">
             <div class="logo-box">JK</div>
-            <div>
-                KIKA SOLUTIONS<br>
-                <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 400;">Enterprise Architecture & IT</span>
+            <div class="logo-copy">
+                <div class="logo-name">KIKA <span>SOLUTIONS</span></div>
+                <span class="logo-tagline">Enterprise Architecture &amp; IT</span>
             </div>
         </div>
         <div class="nav-actions">
@@ -566,19 +1024,64 @@
     </nav>
 
     <section class="hero">
-        <h1 data-i18n="hero_title">Propojuji strategii,<br>architekturu a <span class="text-gradient">reálnou dodávku.</span></h1>
-        <p data-i18n="hero_desc">Jsem seniorní IT & business konzultant. Zajišťuji nezávislý audit IT, navrhuji efektivní architekturu a optimalizuji zdroje. Pomohu vám zachovat funkční legacy systémy levně a modernizovat tam, kde to dává byznysový smysl.</p>
-        
-        <div class="executive-summary">
-            <h3 data-i18n="exec_title">Executive Summary</h3>
-            <ul>
-                <li data-i18n="exec_1"><strong>Nezávislý pohled:</strong> Konec předražených licencí a nákupů nesmyslného hardware. Navrhuji architekturu tak, aby pracovala pro váš zisk, ne pro dodavatele.</li>
-                <li data-i18n="exec_2"><strong>Transformace & Legacy:</strong> Propojení moderních cloudových a datových světů se staršími (legacy) podnikovými systémy bez výpadků provozu.</li>
-                <li data-i18n="exec_3"><strong>Metodiky & Praxe:</strong> Certifikace TOGAF 9, PRINCE2 a ITIL. Léta zkušeností z velkých korporací a komplexních transformačních programů.</li>
-                <li data-i18n="exec_4"><strong>Data & Procesy:</strong> Návrh datových skladů, Azure Data Lakehouse a automatizace firemních procesů pomocí moderních nástrojů.</li>
-            </ul>
+        <div class="hero-showcase">
+            <div class="hero-copy">
+                <p class="hero-kicker" data-i18n="hero_kicker">Nezávislá IT architektura · data · transformace</p>
+                <h1 data-i18n="hero_title">IT architektura, která pomáhá byznysu rozhodovat.</h1>
+                <p class="hero-description" data-i18n="hero_desc">Pomáhám vedení firem najít, co v IT opravdu podporuje byznys, co zbytečně stojí peníze a jak modernizovat bez rozbití systémů, které fungují.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" type="button" onclick="toggleChat()" data-i18n="hero_cta">Probrat váš IT landscape</button>
+                    <a class="hero-secondary" href="#services" data-i18n="hero_secondary">Prohlédnout oblasti spolupráce ↓</a>
+                </div>
+            </div>
+
+            <section class="architecture-demo" aria-labelledby="demoTitle">
+                <div class="demo-header">
+                    <div>
+                        <p class="demo-eyebrow" data-i18n="demo_eyebrow">ARCHITECTURE LENS / 01</p>
+                        <h2 id="demoTitle" data-i18n="demo_title">Architektura pod drobnohledem</h2>
+                    </div>
+                    <span class="demo-status" data-i18n="demo_status">DEMO · MODELOVÁ UKÁZKA</span>
+                </div>
+                <div class="demo-tabs" role="group" data-i18n-aria-label="demo_tabs_label" aria-label="Zvolit pohled">
+                    <button class="demo-tab" type="button" data-demo-mode="cost" aria-pressed="true" data-i18n="demo_tab_cost" onclick="setDemoMode('cost')">Náklady</button>
+                    <button class="demo-tab" type="button" data-demo-mode="data" aria-pressed="false" data-i18n="demo_tab_data" onclick="setDemoMode('data')">Data</button>
+                    <button class="demo-tab" type="button" data-demo-mode="sap" aria-pressed="false" data-i18n="demo_tab_sap" onclick="setDemoMode('sap')">SAP</button>
+                </div>
+                <div class="demo-flow" role="group" aria-live="polite" data-i18n-aria-label="demo_flow_label" aria-label="Tok od systémů k výsledku">
+                    <div class="demo-node" id="demoNode1"><span class="demo-node-index">01 / INPUT</span><span class="demo-node-label" id="demoSource">Licence &amp; provoz</span></div>
+                    <div class="demo-node is-active" id="demoNode2"><span class="demo-node-index">02 / MODEL</span><span class="demo-node-label" id="demoPlatform">IT landscape</span></div>
+                    <div class="demo-node" id="demoNode3"><span class="demo-node-index">03 / OUTCOME</span><span class="demo-node-label" id="demoOutcome">Úsporná roadmapa</span></div>
+                </div>
+                <div class="demo-insight" aria-live="polite">
+                    <span class="demo-insight-mark">↳</span>
+                    <p id="demoInsight">Odhalit duplicity, neomezit schopnost firmy fungovat.</p>
+                </div>
+                <p class="demo-disclaimer" data-i18n="demo_note">Ilustrační scénář, nikoli data konkrétního klienta.</p>
+            </section>
         </div>
 
+        <div class="profile-intro">
+            <div class="profile-copy">
+                <h2 class="profile-name">Jiří Kika</h2>
+                <p class="profile-summary" data-i18n="profile_summary">Od roku 2012 propojuji podnikovou architekturu, data a realizaci změn. Působím jako analytik, architekt i projektový manažer v energetice, výrobě a e-commerce.</p>
+                <a class="profile-link" href="https://www.linkedin.com/in/ji%C5%99%C3%AD-kika-78206651/" target="_blank" rel="noopener noreferrer" data-i18n="profile_link">Profesní profil na LinkedInu ↗</a>
+                <div class="profile-facts" data-i18n-aria-label="profile_highlights" aria-label="Professional highlights">
+                    <div class="profile-fact"><strong>2012</strong><span data-i18n="profile_fact_experience">Praxe v IT od</span></div>
+                    <div class="profile-fact"><strong>C1</strong><span data-i18n="profile_fact_english">Angličtina</span></div>
+                    <div class="profile-fact"><strong>TOGAF 9</strong><span data-i18n="profile_fact_arch">Enterprise architektura</span></div>
+                    <div class="profile-fact"><strong>PRINCE2</strong><span data-i18n="profile_fact_pm">Řízení projektů</span></div>
+                </div>
+            </div>
+            <figure class="profile-portrait">
+                <img src="jiri-kika-portrait.png" alt="Jiří Kika" width="400" height="400">
+            </figure>
+        </div>
+
+        <div class="career-section-heading services-heading">
+            <h2 id="services" data-i18n="services_title">S čím vám pomůžu</h2>
+            <p data-i18n="services_intro">Od nezávislého pohledu na stav IT až po bezpečné provedení změny.</p>
+        </div>
         <div class="services-grid">
             <div class="service-card">
                 <h3 data-i18n="srv1_title">IT Audit & Optimalizace nákladů</h3>
@@ -605,6 +1108,38 @@
                 <p data-i18n="srv6_desc">Návrh a sizing dedikovaných výpočetních stanic a serverů. Eliminace nevhodně předimenzovaného hardware a stavba odladěných uzlů přesně na míru podnikovým zátěžím.</p>
             </div>
         </div>
+
+        <section class="career-section" aria-labelledby="projectsTitle">
+            <div class="career-section-heading">
+                <h2 id="projectsTitle" data-i18n="projects_title">Vybrané projekty</h2>
+                <p data-i18n="projects_intro">Tři oblasti, ve kterých propojuji návrh, rozhodování a dodávku.</p>
+            </div>
+            <div class="project-grid">
+                <article class="project-entry">
+                    <h3 data-i18n="focus_data_title">Data governance &amp; platformy</h3>
+                    <p class="project-role">ŘSD · Powertica · ČEZ Prodej</p>
+                    <p data-i18n="focus_data_desc">Od strategie a standardů data governance po návrh datových platforem a podnikového skladu. Azure Data Lake, Databricks, ADF, Oracle a Power BI.</p>
+                </article>
+                <article class="project-entry">
+                    <h3 data-i18n="focus_energy_title">Energetika &amp; SAP transformace</h3>
+                    <p class="project-role">ČEZ Distribuce · SAPiens</p>
+                    <p data-i18n="focus_energy_desc">Vedení architektury a koordinace závislostí transformačního programu napříč ERP, datovým skladem a digitálními portály.</p>
+                </article>
+                <article class="project-entry">
+                    <h3 data-i18n="focus_digital_title">Digitální obchod &amp; integrace</h3>
+                    <p class="project-role">CERVA GROUP · Mitas</p>
+                    <p data-i18n="focus_digital_desc">Návrh a realizace B2B/B2C portálů, SAP e-commerce a EDI integrací pro Evropu i Severní Ameriku.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="credentials-strip" aria-label="Qualifications">
+            <span><strong>MSc</strong> · ČVUT FEL</span>
+            <span><strong>TOGAF® 9</strong></span>
+            <span><strong>PRINCE2</strong> Practitioner</span>
+            <span><strong>SAP</strong> Activate</span>
+            <span data-i18n="language_short"><strong>CZ</strong> native · <strong>EN</strong> C1 · <strong>DE</strong> passive</span>
+        </section>
         
         <div class="capacity-banner">
             <h3 data-i18n="cap_title">Chybí vám zkušení IT specialisté?</h3>
@@ -635,9 +1170,9 @@
         <div class="privacy-notice-inner">
             <h2 id="privacyTitle" data-i18n="privacy_title">Informace o zpracování údajů z chatu</h2>
             <div>
-                <p data-i18n="privacy_storage">Správcem osobních údajů je Ing. Jiří Kika, IČO 24513083, fyzická osoba podnikající dle živnostenského zákona. Texty chatových zpráv a identifikátor relace se ukládají ve Firebase Firestore po dobu 180 dní od vytvoření každé zprávy. Smazání přes TTL není okamžité a obvykle proběhne do 24 hodin po uplynutí lhůty.</p>
-                <p data-i18n="privacy_email">Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, odešleme přes EmailJS jednorázové upozornění s textem zprávy, kontaktem a identifikátorem relace. Kopie doručené do e-mailové schránky se touto lhůtou ve Firestore nemažou.</p>
-                <p data-i18n="privacy_language">Zvolený jazyk ukládáme v localStorage tohoto prohlížeče, dokud jeho data sami nesmažete.</p>
+                <p data-i18n="privacy_storage"><strong>Správce a chat:</strong> Ing. Jiří Kika, IČO 24513083, fyzická osoba podnikající dle živnostenského zákona. Zprávy a ID relace uchováváme ve Firebase Firestore 180 dní od vytvoření. TTL je maže obvykle do 24 hodin po uplynutí lhůty.</p>
+                <p data-i18n="privacy_email"><strong>E-mailové upozornění:</strong> Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, přes EmailJS odešleme její text, kontakt a ID relace. Kopie v e-mailové schránce uchováváme 180 dní od doručení.</p>
+                <p data-i18n="privacy_language"><strong>Jazyk:</strong> Zvolený jazyk ukládáme v localStorage tohoto prohlížeče, dokud jeho data sami nesmažete.</p>
                 <p><span data-i18n="privacy_contact">Do chatu neposílejte údaje, které nejsou nutné k vyřízení dotazu. S dotazy nebo žádostmi o výmaz se obraťte na</span> <a href="mailto:info@kika-solutions.com">info@kika-solutions.com</a>.</p>
             </div>
         </div>
@@ -682,13 +1217,41 @@
         const translations = {
             cs: {
                 nav_chat: "Konzultovat s asistentem",
-                hero_title: "Propojuji strategii,<br>architekturu a <span class='text-gradient'>reálnou dodávku.</span>",
-                hero_desc: "Jsem seniorní IT & business konzultant. Zajišťuji nezávislý audit IT, navrhuji efektivní architekturu a optimalizuji zdroje. Pomohu vám zachovat funkční legacy systémy levně a modernizovat tam, kde to dává byznysový smysl.",
-                exec_title: "Executive Summary",
-                exec_1: "<strong>Nezávislý pohled:</strong> Konec předražených licencí a nákupů nesmyslného hardware. Navrhuji architekturu tak, aby pracovala pro váš zisk, ne pro dodavatele.",
-                exec_2: "<strong>Transformace & Legacy:</strong> Propojení moderních cloudových a datových světů se staršími (legacy) podnikovými systémy bez výpadků provozu.",
-                exec_3: "<strong>Metodiky & Praxe:</strong> Certifikace TOGAF 9, PRINCE2 a ITIL. Léta zkušeností z velkých korporací a komplexních transformačních programů.",
-                exec_4: "<strong>Data & Procesy:</strong> Návrh datových skladů, Azure Data Lakehouse a automatizace firemních procesů pomocí moderních nástrojů.",
+                hero_kicker: "Nezávislá IT architektura · data · transformace",
+                hero_title: "IT architektura, která pomáhá byznysu rozhodovat.",
+                hero_desc: "Pomáhám vedení firem najít, co v IT opravdu podporuje byznys, co zbytečně stojí peníze a jak modernizovat bez rozbití systémů, které fungují.",
+                hero_cta: "Probrat váš IT landscape",
+                hero_secondary: "Prohlédnout oblasti spolupráce ↓",
+                demo_eyebrow: "ARCHITECTURE LENS / 01",
+                demo_title: "Architektura pod drobnohledem",
+                demo_status: "DEMO · MODELOVÁ UKÁZKA",
+                demo_tabs_label: "Zvolit pohled v ukázce",
+                demo_tab_cost: "Náklady",
+                demo_tab_data: "Data",
+                demo_tab_sap: "SAP",
+                demo_flow_label: "Tok od systémů k výsledku",
+                demo_cost_source: "Licence & provoz",
+                demo_cost_platform: "IT landscape",
+                demo_cost_outcome: "Úsporná roadmapa",
+                demo_cost_insight: "Odhalit duplicity, neomezit schopnost firmy fungovat.",
+                demo_data_source: "Provozní systémy",
+                demo_data_platform: "Datová platforma",
+                demo_data_outcome: "Důvěryhodné KPI",
+                demo_data_insight: "Propojit zdroje dat tak, aby vedení rozhodovalo z jedné ověřené reality.",
+                demo_sap_source: "SAP & legacy",
+                demo_sap_platform: "Mapa závislostí",
+                demo_sap_outcome: "Řízená transformace",
+                demo_sap_insight: "Zmapovat vazby a pořadí změn dřív, než se spustí implementace.",
+                demo_note: "Ilustrační scénář, nikoli data konkrétního klienta.",
+                services_title: "S čím vám pomůžu",
+                services_intro: "Od nezávislého pohledu na stav IT až po bezpečné provedení změny.",
+                profile_summary: "Od roku 2012 propojuji podnikovou architekturu, data a realizaci změn. Působím jako analytik, architekt i projektový manažer v energetice, výrobě a e-commerce.",
+                profile_link: "Profesní profil na LinkedInu ↗",
+                profile_fact_experience: "Praxe v IT od",
+                profile_fact_english: "Angličtina",
+                profile_fact_arch: "Enterprise architektura",
+                profile_fact_pm: "Řízení projektů",
+                profile_highlights: "Profesní přehled",
                 srv1_title: "IT Audit & Optimalizace nákladů",
                 srv1_desc: "Revize současného stavu (AS-IS). Zmapování zbytečných nákladů na licence a zastaralý hardware. Návrh štíhlého cílového stavu (TO-BE), který šetří rozpočet.",
                 srv2_title: "Enterprise Architektura",
@@ -701,6 +1264,15 @@
                 srv5_desc: "Architektonický dohled nad implementacemi (S/4HANA, ECC). Ochrana klienta před vendor-lockem a zbytečnými úpravami standardu.",
                 srv6_title: "Workstation Engineering & Custom HW",
                 srv6_desc: "Návrh a sizing dedikovaných výpočetních stanic a serverů. Eliminace nevhodně předimenzovaného hardware a stavba odladěných uzlů přesně na míru podnikovým zátěžím.",
+                projects_title: "Vybrané zkušenosti",
+                projects_intro: "Tři oblasti, ve kterých propojuji návrh, rozhodování a dodávku.",
+                focus_data_title: "Data governance &amp; platformy",
+                focus_data_desc: "Od strategie a standardů data governance po návrh datových platforem a podnikového skladu. Azure Data Lake, Databricks, ADF, Oracle a Power BI.",
+                focus_energy_title: "Energetika &amp; SAP transformace",
+                focus_energy_desc: "Vedení architektury a koordinace závislostí transformačního programu napříč ERP, datovým skladem a digitálními portály.",
+                focus_digital_title: "Digitální obchod &amp; integrace",
+                focus_digital_desc: "Návrh B2B/B2C portálů, SAP e-commerce a EDI integrací pro Evropu i Severní Ameriku. Zkušenost z Mitas, od roku 2017 součásti Trelleborg Group.",
+                language_short: "<strong>CZ</strong> rodilý · <strong>EN</strong> C1 · <strong>DE</strong> pasivně",
                 cap_title: "Chybí vám zkušení IT specialisté?",
                 cap_desc: "Kromě mých vlastních architektonických kapacit dokáži díky letité praxi zajistit prověřené IT experty – od seniorních vývojářů přes SAP konzultanty, datové inženýry až po krizové projektové manažery.",
                 cap_btn: "Poptat expertní kapacity",
@@ -714,9 +1286,9 @@
                 chat_messages: "Zprávy chatu",
                 privacy_link: "Informace o zpracování údajů",
                 privacy_title: "Informace o zpracování údajů z chatu",
-                privacy_storage: "Správcem osobních údajů je Ing. Jiří Kika, IČO 24513083, fyzická osoba podnikající dle živnostenského zákona. Texty chatových zpráv a identifikátor relace se ukládají ve Firebase Firestore po dobu 180 dní od vytvoření každé zprávy. Smazání přes TTL není okamžité a obvykle proběhne do 24 hodin po uplynutí lhůty.",
-                privacy_email: "Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, odešleme přes EmailJS jednorázové upozornění s textem zprávy, kontaktem a identifikátorem relace. Kopie upozornění v e-mailové schránce uchováváme 180 dní od doručení.",
-                privacy_language: "Zvolený jazyk ukládáme v localStorage tohoto prohlížeče, dokud jeho data sami nesmažete.",
+                privacy_storage: "<strong>Správce a chat:</strong> Ing. Jiří Kika, IČO 24513083, fyzická osoba podnikající dle živnostenského zákona. Zprávy a ID relace uchováváme ve Firebase Firestore 180 dní od vytvoření. TTL je maže obvykle do 24 hodin po uplynutí lhůty.",
+                privacy_email: "<strong>E-mailové upozornění:</strong> Pokud zpráva obsahuje rozpoznaný e-mail nebo telefon, přes EmailJS odešleme její text, kontakt a ID relace. Kopie v e-mailové schránce uchováváme 180 dní od doručení.",
+                privacy_language: "<strong>Jazyk:</strong> Zvolený jazyk ukládáme v localStorage tohoto prohlížeče, dokud jeho data sami nesmažete.",
                 privacy_contact: "Do chatu neposílejte údaje, které nejsou nutné k vyřízení dotazu. S dotazy nebo žádostmi o výmaz se obraťte na",
                 chip_1: "IT Audit & Úspora nákladů",
                 chip_2: "Data Governance",
@@ -738,13 +1310,41 @@
             },
             en: {
                 nav_chat: "Consult with Assistant",
-                hero_title: "Bridging strategy,<br>architecture and <span class='text-gradient'>real delivery.</span>",
-                hero_desc: "I am a senior IT & business consultant. I provide independent IT audits, design efficient architecture, and optimize resources. I help you maintain functional legacy systems cost-effectively while modernizing where it makes business sense.",
-                exec_title: "Executive Summary",
-                exec_1: "<strong>Independent View:</strong> The end of overpriced licenses and pointless hardware purchases. I design architecture to work for your profit, not the vendors'.",
-                exec_2: "<strong>Transformation & Legacy:</strong> Bridging modern cloud and data worlds with older legacy enterprise systems without downtime.",
-                exec_3: "<strong>Methodologies & Practice:</strong> TOGAF 9, PRINCE2, and ITIL certified. Years of experience from large corporations and complex transformation programs.",
-                exec_4: "<strong>Data & Processes:</strong> Design of data warehouses, Azure Data Lakehouse, and corporate process automation using modern tools.",
+                hero_kicker: "Independent IT architecture · data · transformation",
+                hero_title: "Enterprise IT that helps your business make better decisions.",
+                hero_desc: "I help leadership teams identify what supports the business, where IT spend is being wasted, and how to modernize without breaking systems that still work.",
+                hero_cta: "Discuss your IT landscape",
+                hero_secondary: "Explore how I can help ↓",
+                demo_eyebrow: "ARCHITECTURE LENS / 01",
+                demo_title: "Architecture under the lens",
+                demo_status: "DEMO · EXAMPLE SCENARIO",
+                demo_tabs_label: "Choose a demo perspective",
+                demo_tab_cost: "Cost",
+                demo_tab_data: "Data",
+                demo_tab_sap: "SAP",
+                demo_flow_label: "Flow from systems to outcomes",
+                demo_cost_source: "Licenses & operations",
+                demo_cost_platform: "IT landscape",
+                demo_cost_outcome: "Lean roadmap",
+                demo_cost_insight: "Remove duplication without limiting the business's ability to operate.",
+                demo_data_source: "Operational systems",
+                demo_data_platform: "Data platform",
+                demo_data_outcome: "Trusted KPIs",
+                demo_data_insight: "Connect data sources so leadership can make decisions from one trusted view.",
+                demo_sap_source: "SAP & legacy",
+                demo_sap_platform: "Dependency map",
+                demo_sap_outcome: "Controlled transformation",
+                demo_sap_insight: "Map dependencies and change sequence before implementation begins.",
+                demo_note: "Illustrative scenario, not data from a specific client.",
+                services_title: "How I can help",
+                services_intro: "From an independent view of your IT landscape to safely delivering change.",
+                profile_summary: "Since 2012, I have connected enterprise architecture, data, and the delivery of change. I work as an analyst, architect, and project manager across energy, manufacturing, and e-commerce.",
+                profile_link: "View my LinkedIn profile ↗",
+                profile_fact_experience: "IT experience since",
+                profile_fact_english: "English",
+                profile_fact_arch: "Enterprise architecture",
+                profile_fact_pm: "Project management",
+                profile_highlights: "Professional highlights",
                 srv1_title: "IT Audit & Cost Optimization",
                 srv1_desc: "Review of the current state (AS-IS). Mapping unnecessary costs for licenses and outdated hardware. Design of a lean target state (TO-BE) that saves budget.",
                 srv2_title: "Enterprise Architecture",
@@ -757,6 +1357,15 @@
                 srv5_desc: "Architectural oversight of implementations (S/4HANA, ECC). Protecting the client from vendor lock-in and unnecessary standard modifications.",
                 srv6_title: "Workstation Engineering & Custom HW",
                 srv6_desc: "Design and sizing of dedicated computing stations and servers. Eliminating poorly oversized hardware and building nodes tailored perfectly to enterprise workloads.",
+                projects_title: "Selected experience",
+                projects_intro: "Three areas where I connect architecture, decision-making, and delivery.",
+                focus_data_title: "Data governance &amp; platforms",
+                focus_data_desc: "From data governance strategy and standards to data platform and warehouse architecture. Azure Data Lake, Databricks, ADF, Oracle, and Power BI.",
+                focus_energy_title: "Energy &amp; SAP transformation",
+                focus_energy_desc: "Architecture leadership and dependency coordination across ERP, data warehouse, and digital portals in a major transformation program.",
+                focus_digital_title: "Digital commerce &amp; integration",
+                focus_digital_desc: "Design and delivery of B2B/B2C portals, SAP e-commerce, and EDI integrations across Europe and North America. Experience at Mitas, part of Trelleborg Group since 2017.",
+                language_short: "<strong>CZ</strong> native · <strong>EN</strong> C1 · <strong>DE</strong> passive",
                 cap_title: "Missing experienced IT specialists?",
                 cap_desc: "In addition to my own architectural capacities, my years of practice allow me to source proven IT experts – from senior developers to SAP consultants, data engineers, and crisis project managers.",
                 cap_btn: "Request Expert Capacities",
@@ -770,9 +1379,9 @@
                 chat_messages: "Chat messages",
                 privacy_link: "Data processing information",
                 privacy_title: "Chat data processing information",
-                privacy_storage: "The data controller is Ing. Jiří Kika, company ID 24513083, a self-employed natural person under the Trade Licensing Act. Chat message text and the session identifier are stored in Firebase Firestore for 180 days from the creation of each message. TTL deletion is not immediate and typically occurs within 24 hours after that period.",
-                privacy_email: "If a message contains a recognized email address or phone number, a one-time notification with the message text, contact detail, and session identifier is sent via EmailJS. Copies of notifications in the email inbox are kept for 180 days from delivery.",
-                privacy_language: "The selected language is stored in this browser's localStorage until you clear its data.",
+                privacy_storage: "<strong>Controller and chat:</strong> Ing. Jiří Kika, company ID 24513083, a self-employed natural person under the Trade Licensing Act. Messages and the session ID are kept in Firebase Firestore for 180 days from creation. TTL typically deletes them within 24 hours after expiry.",
+                privacy_email: "<strong>Email notification:</strong> If a message contains a recognized email address or phone number, its text, contact detail, and session ID are sent via EmailJS. Copies in the email inbox are kept for 180 days from delivery.",
+                privacy_language: "<strong>Language:</strong> The selected language is stored in this browser's localStorage until you clear its data.",
                 privacy_contact: "Do not share information in chat unless it is needed to handle your inquiry. For questions or deletion requests, contact",
                 chip_1: "IT Audit & Cost Optimization",
                 chip_2: "Data Governance",
@@ -795,6 +1404,26 @@
         };
 
         let currentLang = localStorage.getItem('lang') || 'cs';
+        let currentDemoMode = 'cost';
+
+        function setDemoMode(mode) {
+            if (!['cost', 'data', 'sap'].includes(mode)) return;
+
+            currentDemoMode = mode;
+            const translation = translations[currentLang];
+            document.getElementById('demoSource').textContent = translation[`demo_${mode}_source`];
+            document.getElementById('demoPlatform').textContent = translation[`demo_${mode}_platform`];
+            document.getElementById('demoOutcome').textContent = translation[`demo_${mode}_outcome`];
+            document.getElementById('demoInsight').textContent = translation[`demo_${mode}_insight`];
+
+            document.querySelectorAll('[data-demo-mode]').forEach(button => {
+                button.setAttribute('aria-pressed', String(button.dataset.demoMode === mode));
+            });
+
+            document.querySelectorAll('.demo-node').forEach((node, index) => {
+                node.classList.toggle('is-active', index === (mode === 'sap' ? 0 : 1));
+            });
+        }
 
         function setLang(lang) {
             currentLang = lang;
@@ -817,6 +1446,8 @@
                 const key = el.getAttribute('data-i18n-aria-label');
                 if (translations[lang][key]) el.setAttribute('aria-label', translations[lang][key]);
             });
+
+            setDemoMode(currentDemoMode);
         }
 
         // --- FIREBASE SETUP ---
