@@ -574,6 +574,7 @@
     <!-- FIREBASE COMPAT LIBRARIES -->
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
         // --- MULTILANGUAGE DICTIONARY ---
@@ -698,6 +699,8 @@
             appId: "1:128646324567:web:0d4eaaba7a05ec41f39e12"
         };
 
+        emailjs.init({ publicKey: "djBttv98Jx1zxTWaI" });
+
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const sessionId = "chat_" + Date.now() + "_" + Math.random().toString(36).substr(2, 5);
@@ -763,6 +766,17 @@
             if (e.key === 'Enter') sendMessage();
         }
 
+        function sendEmailNotification(userMessage, contactDetected) {
+            emailjs.send("service_kc6r25e", "template_za7h1om", {
+                message: userMessage,
+                contact_info: contactDetected ? "ANO (detekován kontakt)" : "Zatím neuveden",
+                session_id: sessionId
+            }).then(
+                response => console.log('Email úspěšně odeslán!', response.status, response.text),
+                error => console.error('Chyba odeslání emailu:', error)
+            );
+        }
+
         function sendMessage() {
             const text = chatInput.value.trim();
             if (!text) return;
@@ -774,6 +788,7 @@
             // 1. Detekce kontaktů (email nebo telefon)
             const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
             const phoneMatch = text.match(/(\+?\d{3})?[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{3}/);
+            sendEmailNotification(text, emailMatch || phoneMatch);
             
             // 2. Detekce témat
             const lowerText = text.toLowerCase();
