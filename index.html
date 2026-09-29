@@ -254,7 +254,7 @@
 
         .demo-tabs {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(5, minmax(0, 1fr));
             gap: 0.35rem;
             margin-bottom: 1.25rem;
             padding: 0.25rem;
@@ -263,12 +263,14 @@
         }
 
         .demo-tab {
-            min-height: 38px;
+            min-height: 44px;
+            padding: 0 0.2rem;
             border: 0;
             background: transparent;
             color: var(--text-muted);
             font-size: 0.78rem;
             font-weight: 650;
+            line-height: 1.2;
             cursor: pointer;
         }
 
@@ -890,6 +892,10 @@
                 white-space: normal;
             }
 
+            .demo-tabs {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
             .hero-actions {
                 align-items: stretch;
                 flex-direction: column;
@@ -1048,18 +1054,20 @@
                     <span class="demo-status" data-i18n="demo_status">DEMO · MODELOVÁ UKÁZKA</span>
                 </div>
                 <div class="demo-tabs" role="group" data-i18n-aria-label="demo_tabs_label" aria-label="Zvolit pohled">
-                    <button class="demo-tab" type="button" data-demo-mode="cost" aria-pressed="true" data-i18n="demo_tab_cost" onclick="setDemoMode('cost')">Náklady</button>
-                    <button class="demo-tab" type="button" data-demo-mode="data" aria-pressed="false" data-i18n="demo_tab_data" onclick="setDemoMode('data')">Data</button>
+                    <button class="demo-tab" type="button" data-demo-mode="analysis" aria-pressed="true" data-i18n="demo_tab_analysis" onclick="setDemoMode('analysis')">Analýza</button>
+                    <button class="demo-tab" type="button" data-demo-mode="architecture" aria-pressed="false" data-i18n="demo_tab_architecture" onclick="setDemoMode('architecture')">Architektura</button>
+                    <button class="demo-tab" type="button" data-demo-mode="pm" aria-pressed="false" data-i18n="demo_tab_pm" onclick="setDemoMode('pm')">Projektový management</button>
+                    <button class="demo-tab" type="button" data-demo-mode="data" aria-pressed="false" data-i18n="demo_tab_data" onclick="setDemoMode('data')">Data governance</button>
                     <button class="demo-tab" type="button" data-demo-mode="sap" aria-pressed="false" data-i18n="demo_tab_sap" onclick="setDemoMode('sap')">SAP</button>
                 </div>
                 <div class="demo-flow" role="group" aria-live="polite" data-i18n-aria-label="demo_flow_label" aria-label="Tok od systémů k výsledku">
-                    <div class="demo-node" id="demoNode1"><span class="demo-node-index">01 / INPUT</span><span class="demo-node-label" id="demoSource">Licence &amp; provoz</span></div>
-                    <div class="demo-node is-active" id="demoNode2"><span class="demo-node-index">02 / MODEL</span><span class="demo-node-label" id="demoPlatform">IT landscape</span></div>
-                    <div class="demo-node" id="demoNode3"><span class="demo-node-index">03 / OUTCOME</span><span class="demo-node-label" id="demoOutcome">Úsporná roadmapa</span></div>
+                    <div class="demo-node" id="demoNode1"><span class="demo-node-index">01 / INPUT</span><span class="demo-node-label" id="demoSource">Cíle &amp; potřeby</span></div>
+                    <div class="demo-node is-active" id="demoNode2"><span class="demo-node-index">02 / MODEL</span><span class="demo-node-label" id="demoPlatform">Procesní analýza</span></div>
+                    <div class="demo-node" id="demoNode3"><span class="demo-node-index">03 / OUTCOME</span><span class="demo-node-label" id="demoOutcome">Prioritizované zadání</span></div>
                 </div>
                 <div class="demo-insight" aria-live="polite">
                     <span class="demo-insight-mark">↳</span>
-                    <p id="demoInsight">Odhalit duplicity, neomezit schopnost firmy fungovat.</p>
+                    <p id="demoInsight">Převést potřeby byznysu do konkrétních požadavků a priorit.</p>
                 </div>
                 <p class="demo-disclaimer" data-i18n="demo_note">Ilustrační scénář, nikoli data konkrétního klienta.</p>
             </section>
@@ -1068,7 +1076,7 @@
         <div class="profile-intro">
             <div class="profile-copy">
                 <h2 class="profile-name">Jiří Kika</h2>
-                <p class="profile-summary" data-i18n="profile_summary">Od roku 2012 propojuji podnikovou architekturu, data a realizaci změn. Působím jako analytik, architekt i projektový manažer v energetice, výrobě a e-commerce.</p>
+                <p class="profile-summary" data-i18n="profile_summary">Od roku 2012 propojuji podnikovou architekturu, data a realizaci změn. Působím jako analytik, architekt i projektový manažer v energetice, výrobě a oblasti omnichannelu.</p>
                 <a class="profile-link" href="https://www.linkedin.com/in/ji%C5%99%C3%AD-kika-78206651/" target="_blank" rel="noopener noreferrer" data-i18n="profile_link">Profesní profil na LinkedInu ↗</a>
                 <div class="profile-facts" data-i18n-aria-label="profile_highlights" aria-label="Professional highlights">
                     <div class="profile-fact"><strong>2012</strong><span data-i18n="profile_fact_experience">Praxe v IT od</span></div>
@@ -1088,8 +1096,8 @@
         </div>
         <div class="services-grid">
             <div class="service-card">
-                <h3 data-i18n="srv1_title">IT Audit & Optimalizace nákladů</h3>
-                <p data-i18n="srv1_desc">Revize současného stavu (AS-IS). Zmapování zbytečných nákladů na licence a zastaralý hardware. Návrh štíhlého cílového stavu (TO-BE), který šetří rozpočet.</p>
+                <h3 data-i18n="srv1_title">Revize IT a konzultační služby</h3>
+                <p data-i18n="srv1_desc">Nezávisle zhodnotím vaše systémy, procesy, licence i hardware. Pojmenuji hlavní rizika a příležitosti ke zlepšení a navrhnu konkrétní další kroky.</p>
             </div>
             <div class="service-card">
                 <h3 data-i18n="srv2_title">Enterprise Architektura</h3>
@@ -1108,8 +1116,8 @@
                 <p data-i18n="srv5_desc">Architektonický dohled nad implementacemi (S/4HANA, ECC). Ochrana klienta před vendor-lockem a zbytečnými úpravami standardu.</p>
             </div>
             <div class="service-card">
-                <h3 data-i18n="srv6_title">Workstation Engineering & Custom HW</h3>
-                <p data-i18n="srv6_desc">Návrh a sizing dedikovaných výpočetních stanic a serverů. Eliminace nevhodně předimenzovaného hardware a stavba odladěných uzlů přesně na míru podnikovým zátěžím.</p>
+                <h3 data-i18n="srv6_title">Business analýza</h3>
+                <p data-i18n="srv6_desc">Vyjasnění obchodních cílů a potřeb uživatelů, mapování procesů a převod požadavků do zadání pro IT. Pomáhám určit priority a ověřit, že navržené změny přinesou očekávanou hodnotu.</p>
             </div>
         </div>
 
@@ -1122,17 +1130,17 @@
                 <article class="project-entry">
                     <h3 data-i18n="focus_data_title">Data governance &amp; platformy</h3>
                     <p class="project-role">ŘSD · Powertica · ČEZ Prodej</p>
-                    <p data-i18n="focus_data_desc">Od strategie a standardů data governance po návrh datových platforem a podnikového skladu. Azure Data Lake, Databricks, ADF, Oracle a Power BI.</p>
+                    <p data-i18n="focus_data_desc">Konzultoval jsem enterprise architekturu a nastavoval Data Governance v souladu s DAMA-DMBOK. Realizoval jsem datové projekty od standardních DWH po specializované ETL procesy, od analýzy přes vývoj až po testování v prostředí Oracle, Microsoft a Databricks.</p>
                 </article>
                 <article class="project-entry">
                     <h3 data-i18n="focus_energy_title">Energetika &amp; SAP transformace</h3>
-                    <p class="project-role">ČEZ Distribuce · SAPiens</p>
+                    <p class="project-role">ČEZ Distribuce</p>
                     <p data-i18n="focus_energy_desc">Vedení architektury a koordinace závislostí transformačního programu napříč ERP, datovým skladem a digitálními portály.</p>
                 </article>
                 <article class="project-entry">
                     <h3 data-i18n="focus_digital_title">Digitální obchod &amp; integrace</h3>
-                    <p class="project-role">CERVA GROUP · Mitas</p>
-                    <p data-i18n="focus_digital_desc">Návrh a realizace B2B/B2C portálů, SAP e-commerce a EDI integrací pro Evropu i Severní Ameriku.</p>
+                    <p class="project-role">CERVA GROUP · Mitas · Trelleborg Group</p>
+                    <p data-i18n="focus_digital_desc">Průkopnická první implementace rozsáhlého nástroje z portfolia SAP s globálním dosahem. Převzal jsem odpovědnost za kompletní strategii řešení i realizaci: od práce s daty a návrhu mockupů až po dodání celého řešení.</p>
                 </article>
             </div>
         </section>
@@ -1197,7 +1205,7 @@
                 <button class="suggestion-chip" type="button" onclick="sendSuggestion(translations[currentLang].chip_1)" data-i18n="chip_1">IT Audit & Úspora nákladů</button>
                 <button class="suggestion-chip" type="button" onclick="sendSuggestion(translations[currentLang].chip_2)" data-i18n="chip_2">Data Governance</button>
                 <button class="suggestion-chip" type="button" onclick="sendSuggestion(translations[currentLang].chip_3)" data-i18n="chip_3">Enterprise Architektura</button>
-                <button class="suggestion-chip" type="button" onclick="sendSuggestion(translations[currentLang].chip_4)" data-i18n="chip_4">Workstation Engineering</button>
+                <button class="suggestion-chip" type="button" onclick="sendSuggestion(translations[currentLang].chip_4)" data-i18n="chip_4">Business analýza</button>
             </div>
             <div class="chat-input-area">
                 <input type="text" id="chatInput" placeholder="Napište zprávu nebo zanechte kontakt..." data-i18n-placeholder="chat_input" data-i18n-aria-label="chat_input" aria-label="Napište zprávu nebo zanechte kontakt..." onkeypress="handleKeyPress(event)">
@@ -1230,14 +1238,24 @@
                 demo_title: "Architektura pod drobnohledem",
                 demo_status: "DEMO · MODELOVÁ UKÁZKA",
                 demo_tabs_label: "Zvolit pohled v ukázce",
-                demo_tab_cost: "Náklady",
-                demo_tab_data: "Data",
+                demo_tab_analysis: "Analýza",
+                demo_tab_architecture: "Architektura",
+                demo_tab_pm: "Projektový management",
+                demo_tab_data: "Data governance",
                 demo_tab_sap: "SAP",
                 demo_flow_label: "Tok od systémů k výsledku",
-                demo_cost_source: "Licence & provoz",
-                demo_cost_platform: "IT landscape",
-                demo_cost_outcome: "Úsporná roadmapa",
-                demo_cost_insight: "Odhalit duplicity, neomezit schopnost firmy fungovat.",
+                demo_analysis_source: "Cíle & potřeby",
+                demo_analysis_platform: "Procesní analýza",
+                demo_analysis_outcome: "Prioritizované zadání",
+                demo_analysis_insight: "Převést potřeby byznysu do konkrétních požadavků a priorit.",
+                demo_architecture_source: "Aplikace & integrace",
+                demo_architecture_platform: "Cílová architektura",
+                demo_architecture_outcome: "Plán změn",
+                demo_architecture_insight: "Zmapovat vazby systémů a navrhnout proveditelný cílový stav.",
+                demo_pm_source: "Rozsah & závislosti",
+                demo_pm_platform: "Řízení projektu",
+                demo_pm_outcome: "Termíny, rizika, přehled",
+                demo_pm_insight: "Sladit týmy, dodavatele a rozhodování napříč realizací.",
                 demo_data_source: "Provozní systémy",
                 demo_data_platform: "Datová platforma",
                 demo_data_outcome: "Důvěryhodné KPI",
@@ -1249,15 +1267,15 @@
                 demo_note: "Ilustrační scénář, nikoli data konkrétního klienta.",
                 services_title: "S čím vám pomůžu",
                 services_intro: "Od nezávislého pohledu na stav IT až po bezpečné provedení změny.",
-                profile_summary: "Od roku 2012 propojuji podnikovou architekturu, data a realizaci změn. Působím jako analytik, architekt i projektový manažer v energetice, výrobě a e-commerce.",
+                profile_summary: "Od roku 2012 propojuji podnikovou architekturu, data a realizaci změn. Působím jako analytik, architekt i projektový manažer v energetice, výrobě a oblasti omnichannelu.",
                 profile_link: "Profesní profil na LinkedInu ↗",
                 profile_fact_experience: "Praxe v IT od",
                 profile_fact_english: "Angličtina",
                 profile_fact_arch: "Enterprise architektura",
                 profile_fact_pm: "Řízení projektů",
                 profile_highlights: "Profesní přehled",
-                srv1_title: "IT Audit & Optimalizace nákladů",
-                srv1_desc: "Revize současného stavu (AS-IS). Zmapování zbytečných nákladů na licence a zastaralý hardware. Návrh štíhlého cílového stavu (TO-BE), který šetří rozpočet.",
+                srv1_title: "Revize IT a konzultační služby",
+                srv1_desc: "Nezávisle zhodnotím vaše systémy, procesy, licence i hardware. Pojmenuji hlavní rizika a příležitosti ke zlepšení a navrhnu konkrétní další kroky.",
                 srv2_title: "Enterprise Architektura",
                 srv2_desc: "Vytvoření IT roadmapy, definování standardů a řízení technického dluhu. Sladění business požadavků s reálnými možnostmi vývoje.",
                 srv3_title: "Data Governance & Datové sklady",
@@ -1266,16 +1284,16 @@
                 srv4_desc: "Koordinace dodavatelů, řízení rozsahu, rozpočtu a rizik. Nastavení jasné governance a transparentního reportingu pro představenstvo.",
                 srv5_title: "Dohled nad SAP programy",
                 srv5_desc: "Architektonický dohled nad implementacemi (S/4HANA, ECC). Ochrana klienta před vendor-lockem a zbytečnými úpravami standardu.",
-                srv6_title: "Workstation Engineering & Custom HW",
-                srv6_desc: "Návrh a sizing dedikovaných výpočetních stanic a serverů. Eliminace nevhodně předimenzovaného hardware a stavba odladěných uzlů přesně na míru podnikovým zátěžím.",
+                srv6_title: "Business analýza",
+                srv6_desc: "Vyjasnění obchodních cílů a potřeb uživatelů, mapování procesů a převod požadavků do zadání pro IT. Pomáhám určit priority a ověřit, že navržené změny přinesou očekávanou hodnotu.",
                 projects_title: "Vybrané zkušenosti",
                 projects_intro: "Tři oblasti, ve kterých propojuji návrh, rozhodování a dodávku.",
                 focus_data_title: "Data governance &amp; platformy",
-                focus_data_desc: "Od strategie a standardů data governance po návrh datových platforem a podnikového skladu. Azure Data Lake, Databricks, ADF, Oracle a Power BI.",
+                focus_data_desc: "Konzultoval jsem enterprise architekturu a nastavoval Data Governance v souladu s DAMA-DMBOK. Realizoval jsem datové projekty od standardních DWH po specializované ETL procesy, od analýzy přes vývoj až po testování v prostředí Oracle, Microsoft a Databricks.",
                 focus_energy_title: "Energetika &amp; SAP transformace",
-                focus_energy_desc: "Vedení architektury a koordinace závislostí transformačního programu napříč ERP, datovým skladem a digitálními portály.",
+                focus_energy_desc: "Stanovil jsem strategii nákupu zdrojů v objemu 1,5 mld. Kč pro největší SAP projekt v ČR v ČEZ Distribuci. V energetice jsem prosazoval přístup založený na standardu a koordinoval závislosti napříč ERP, datovým skladem a digitálními portály.",
                 focus_digital_title: "Digitální obchod &amp; integrace",
-                focus_digital_desc: "Návrh B2B/B2C portálů, SAP e-commerce a EDI integrací pro Evropu i Severní Ameriku. Zkušenost z Mitas, od roku 2017 součásti Trelleborg Group.",
+                focus_digital_desc: "Průkopnická první implementace rozsáhlého nástroje z portfolia SAP s globálním dosahem. Převzal jsem odpovědnost za kompletní strategii řešení i realizaci: od práce s daty a návrhu mockupů až po dodání celého řešení.",
                 language_short: "<strong>CZ</strong> rodilý · <strong>EN</strong> C1 · <strong>DE</strong> pasivně",
                 cap_title: "Chybí vám zkušení IT specialisté?",
                 cap_desc: "Vedle vlastních konzultačních služeb mohu díky dlouholeté praxi zajistit prověřené IT specialisty napříč rolemi – od seniorních vývojářů a SAP konzultantů po datové inženýry a krizové projektové manažery.",
@@ -1297,7 +1315,7 @@
                 chip_1: "IT Audit & Úspora nákladů",
                 chip_2: "Data Governance",
                 chip_3: "Enterprise Architektura",
-                chip_4: "Workstation Engineering",
+                chip_4: "Business analýza",
                 bot_intro: "Dobrý den, jsem asistent Jiřího Kiky. Potřebujete zefektivnit IT architekturu, zrevidovat licence, probrat řízení projektu nebo hledáte expertní kapacity?",
                 bot_contact_req: "Abychom vám mohli připravit konkrétní rozvahu nebo nezávaznou nabídku, zanechte mi prosím váš e-mail nebo telefon.",
                 bot_contact_ack: "Děkuji, kontakt ({contact}) jsem v pořádku zaznamenal a předal přímo Jiřímu Kikovi. Máte ještě jakýkoliv dotaz k auditu, architektuře nebo kapacitám?",
@@ -1308,7 +1326,7 @@
                 bot_audit_general: "IT Audit provádíme jako nezávislou revizi současného stavu (AS-IS). Zmapujeme zbytečně placené licence, zastaralý či předimenzovaný HW a neefektivní procesy. Cílem je uvolnit rozpočet pro smysluplnou modernizaci a zachovat funkční legacy systémy levně a bezpečně.",
                 bot_data_general: "V oblasti Data Governance řešíme jednotnou pravdu o datech. Navrhujeme moderní Azure Data Lakehouse architekturu, Databricks a spolehlivé integrace (např. EDI), aby mělo vedení firmy k dispozici čistá data pro reporting a AI bez ručních excelovských zásahů.",
                 bot_arch_general: "Enterprise architekturu stavíme na standardech TOGAF 9 a ITIL. Sladíme byznys strategii s možnostmi IT, řídíme technický dluh a poskytujeme nezávislý dohled nad implementacemi (včetně SAP S/4HANA), abyste se vyhnuli vendor-locku.",
-                bot_hw_general: "U Workstation Engineeringu a Custom HW děláme přesný sizing. Místo předražených typových sestav navrhneme a odladíme výpočetní stanice a servery přesně podle vašich konkrétních aplikací s důrazem na spolehlivost, tichý chod a maximální poměr cena/výkon.",
+                bot_ba_general: "Business analýza pomáhá převést obchodní potřeby do srozumitelných a ověřitelných požadavků. Zmapujeme procesy, sladíme očekávání klíčových lidí a určíme priority tak, aby IT změna řešila skutečný problém.",
                 bot_cap_general: "Díky rozsáhlé síti seniorních IT kontaktů zajišťujeme prověřené experty – od enterprise architektů, přes senior vývojáře a data engineery, až po SAP konzultanty a krizové PM.",
                 bot_pushback: "Rozumím, omlouvám se. Můžete kontakt napsat přímo sem, až se vám to bude hodit, případně se můžete kdykoliv přímo spojit s Jiřím Kikou na telefonu +420 732 263 184."
             },
@@ -1323,14 +1341,24 @@
                 demo_title: "Architecture under the lens",
                 demo_status: "DEMO · EXAMPLE SCENARIO",
                 demo_tabs_label: "Choose a demo perspective",
-                demo_tab_cost: "Cost",
-                demo_tab_data: "Data",
-                demo_tab_sap: "SAP",
                 demo_flow_label: "Flow from systems to outcomes",
-                demo_cost_source: "Licenses & operations",
-                demo_cost_platform: "IT landscape",
-                demo_cost_outcome: "Lean roadmap",
-                demo_cost_insight: "Remove duplication without limiting the business's ability to operate.",
+                demo_tab_analysis: "Analysis",
+                demo_tab_architecture: "Architecture",
+                demo_tab_pm: "Project management",
+                demo_tab_data: "Data governance",
+                demo_tab_sap: "SAP",
+                demo_analysis_source: "Goals & needs",
+                demo_analysis_platform: "Process analysis",
+                demo_analysis_outcome: "Prioritized requirements",
+                demo_analysis_insight: "Translate business needs into clear requirements and priorities.",
+                demo_architecture_source: "Applications & integrations",
+                demo_architecture_platform: "Target architecture",
+                demo_architecture_outcome: "Change roadmap",
+                demo_architecture_insight: "Map system dependencies and design a feasible target state.",
+                demo_pm_source: "Scope & dependencies",
+                demo_pm_platform: "Project governance",
+                demo_pm_outcome: "Schedule, risks, visibility",
+                demo_pm_insight: "Align teams, vendors, and decisions throughout delivery.",
                 demo_data_source: "Operational systems",
                 demo_data_platform: "Data platform",
                 demo_data_outcome: "Trusted KPIs",
@@ -1342,15 +1370,15 @@
                 demo_note: "Illustrative scenario, not data from a specific client.",
                 services_title: "How I can help",
                 services_intro: "From an independent view of your IT landscape to safely delivering change.",
-                profile_summary: "Since 2012, I have connected enterprise architecture, data, and the delivery of change. I work as an analyst, architect, and project manager across energy, manufacturing, and e-commerce.",
+                profile_summary: "Since 2012, I have connected enterprise architecture, data, and the delivery of change. I work as an analyst, architect, and project manager across energy, manufacturing, and omnichannel commerce.",
                 profile_link: "View my LinkedIn profile ↗",
                 profile_fact_experience: "IT experience since",
                 profile_fact_english: "English",
                 profile_fact_arch: "Enterprise architecture",
                 profile_fact_pm: "Project management",
                 profile_highlights: "Professional highlights",
-                srv1_title: "IT Audit & Cost Optimization",
-                srv1_desc: "Review of the current state (AS-IS). Mapping unnecessary costs for licenses and outdated hardware. Design of a lean target state (TO-BE) that saves budget.",
+                srv1_title: "IT Review & Advisory",
+                srv1_desc: "I independently assess your systems, processes, licenses, and hardware. I identify key risks and opportunities for improvement, then recommend clear next steps.",
                 srv2_title: "Enterprise Architecture",
                 srv2_desc: "Creation of IT roadmaps, defining standards, and managing technical debt. Aligning business requirements with real development capabilities.",
                 srv3_title: "Data Governance & Warehouses",
@@ -1359,16 +1387,16 @@
                 srv4_desc: "Vendor coordination, scope, budget, and risk management. Setting up clear governance and transparent reporting for the board.",
                 srv5_title: "SAP Program Oversight",
                 srv5_desc: "Architectural oversight of implementations (S/4HANA, ECC). Protecting the client from vendor lock-in and unnecessary standard modifications.",
-                srv6_title: "Workstation Engineering & Custom HW",
-                srv6_desc: "Design and sizing of dedicated computing stations and servers. Eliminating poorly oversized hardware and building nodes tailored perfectly to enterprise workloads.",
+                srv6_title: "Business Analysis",
+                srv6_desc: "Clarifying business goals and user needs, mapping processes, and translating requirements into actionable IT scope. I help set priorities and validate that proposed changes deliver the expected value.",
                 projects_title: "Selected experience",
                 projects_intro: "Three areas where I connect architecture, decision-making, and delivery.",
                 focus_data_title: "Data governance &amp; platforms",
-                focus_data_desc: "From data governance strategy and standards to data platform and warehouse architecture. Azure Data Lake, Databricks, ADF, Oracle, and Power BI.",
+                focus_data_desc: "I advised on enterprise architecture and established Data Governance aligned with DAMA-DMBOK. I delivered data projects ranging from traditional data warehouses to specialized ETL processes, from analysis and development through testing across Oracle, Microsoft, and Databricks environments.",
                 focus_energy_title: "Energy &amp; SAP transformation",
-                focus_energy_desc: "Architecture leadership and dependency coordination across ERP, data warehouse, and digital portals in a major transformation program.",
+                focus_energy_desc: "Defined the sourcing strategy for resources worth CZK 1.5 billion for the largest SAP project in the Czech Republic at ČEZ Distribuce. In the energy sector, I promoted a standard-based approach and coordinated dependencies across ERP, the data warehouse, and digital portals.",
                 focus_digital_title: "Digital commerce &amp; integration",
-                focus_digital_desc: "Design and delivery of B2B/B2C portals, SAP e-commerce, and EDI integrations across Europe and North America. Experience at Mitas, part of Trelleborg Group since 2017.",
+                focus_digital_desc: "A pioneering first implementation of a large-scale SAP product with global reach. I took ownership of the complete solution strategy and delivery, from data work and mockup design through end-to-end implementation.",
                 language_short: "<strong>CZ</strong> native · <strong>EN</strong> C1 · <strong>DE</strong> passive",
                 cap_title: "Missing experienced IT specialists?",
                 cap_desc: "Alongside my consulting work, I can draw on years of experience to source trusted IT specialists across roles – from senior developers and SAP consultants to data engineers and project turnaround leads.",
@@ -1390,7 +1418,7 @@
                 chip_1: "IT Audit & Cost Optimization",
                 chip_2: "Data Governance",
                 chip_3: "Enterprise Architecture",
-                chip_4: "Workstation Engineering",
+                chip_4: "Business Analysis",
                 bot_intro: "Hello, I am Jiří Kika's assistant. Do you need to streamline your IT architecture, review licenses, discuss project management, or are you looking for expert capacities?",
                 bot_contact_req: "To prepare a specific estimate or proposal, please leave your email or phone number here in the chat.",
                 bot_contact_ack: "Thank you, I have successfully recorded your contact ({contact}) and forwarded it to Jiří Kika. Do you have any specific questions about the audit, IT, or capacities?",
@@ -1401,17 +1429,17 @@
                 bot_audit_general: "We conduct IT Audits as independent AS-IS evaluations. We identify wasteful software licenses, oversized hardware, and bottlenecks. Our goal is to free up your budget for meaningful modernization while keeping legacy services cheap and stable.",
                 bot_data_general: "In Data Governance, we establish a single source of truth. We design Azure Data Lakehouse architectures, Databricks pipelines, and EDI integrations so leadership has accurate data without manual Excel manipulations.",
                 bot_arch_general: "We build Enterprise Architecture upon TOGAF 9 and ITIL frameworks. We align business strategy with IT capabilities, mitigate technical debt, and oversee large enterprise systems (like SAP S/4HANA) to prevent vendor lock-in.",
-                bot_hw_general: "For Workstation Engineering, we size hardware precisely for specific enterprise workloads. Instead of overpriced boxed units, we design tuned nodes with the ideal price/performance ratio.",
+                bot_ba_general: "Business analysis translates business needs into clear, verifiable requirements. We map processes, align key stakeholders, and set priorities so IT changes address the actual problem.",
                 bot_cap_general: "Through a vetted network of senior IT professionals, we supply seasoned experts – enterprise architects, senior engineers, data specialists, SAP consultants, and crisis PMs.",
                 bot_pushback: "I understand, my apologies. You can share your contact whenever convenient, or reach Jiří Kika directly by phone at +420 732 263 184."
             }
         };
 
         let currentLang = localStorage.getItem('lang') || 'cs';
-        let currentDemoMode = 'cost';
+        let currentDemoMode = 'analysis';
 
         function setDemoMode(mode) {
-            if (!['cost', 'data', 'sap'].includes(mode)) return;
+            if (!['analysis', 'architecture', 'pm', 'data', 'sap'].includes(mode)) return;
 
             currentDemoMode = mode;
             const translation = translations[currentLang];
@@ -1598,7 +1626,7 @@
             const asksForAudit = lowerText.includes("audit") || lowerText.includes("licenc");
             const asksForData = lowerText.includes("data") || lowerText.includes("sklad") || lowerText.includes("governance") || lowerText.includes("databricks");
             const asksForArch = lowerText.includes("architekt") || lowerText.includes("togaf") || lowerText.includes("sap");
-            const asksForHW = lowerText.includes("hw") || lowerText.includes("workstation") || lowerText.includes("hardware") || lowerText.includes("server");
+            const asksForBusinessAnalysis = lowerText.includes("business anal") || lowerText.includes("business analysis") || lowerText.includes("byznys anal") || lowerText.includes("proces") || lowerText.includes("požadavk") || lowerText.includes("requirements");
             const asksForCap = lowerText.includes("kapacit") || lowerText.includes("expert") || lowerText.includes("specialist") || lowerText.includes("tým") || lowerText.includes("team");
             const pushback = lowerText.includes("nebude") || lowerText.includes("nemá") || lowerText.includes("nemam") || lowerText.includes("nechci");
 
@@ -1652,9 +1680,9 @@
                     return;
                 }
 
-                // G) Workstation Engineering / HW
-                if (asksForHW) {
-                    appendMessage('Asistent', t.bot_hw_general, 'assistant');
+                // G) Business analysis
+                if (asksForBusinessAnalysis) {
+                    appendMessage('Asistent', t.bot_ba_general, 'assistant');
                     if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
                     return;
                 }
