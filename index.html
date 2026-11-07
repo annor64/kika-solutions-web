@@ -5,6 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jiří Kika | Kika Solutions - Enterprise Architecture & IT</title>
+    <meta name="description" id="metaDescription" content="Nezávislá IT architektura, data a transformace. Pomáhám vedení firem poznat, co v IT podporuje byznys, a modernizovat bez rozbití systémů, které fungují.">
+    <link rel="canonical" href="https://kika-solutions.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" id="ogLocale" content="cs_CZ">
+    <meta property="og:site_name" content="Kika Solutions">
+    <meta property="og:url" content="https://kika-solutions.com/">
+    <meta property="og:title" content="Jiří Kika | Kika Solutions — Enterprise Architecture &amp; IT">
+    <meta property="og:description" id="ogDescription" content="Nezávislá IT architektura, data a transformace. Pomáhám vedení firem poznat, co v IT podporuje byznys, a modernizovat bez rozbití systémů, které fungují.">
+    <meta property="og:image" content="https://kika-solutions.com/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Jiří Kika, Kika Solutions">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jiří Kika | Kika Solutions — Enterprise Architecture &amp; IT">
+    <meta name="twitter:description" id="twitterDescription" content="Nezávislá IT architektura, data a transformace. Pomáhám vedení firem poznat, co v IT podporuje byznys, a modernizovat bez rozbití systémů, které fungují.">
+    <meta name="twitter:image" content="https://kika-solutions.com/og.jpg">
     <style>
         :root {
             --bg-main: #0a0a0c;
@@ -263,14 +279,16 @@
         }
 
         .demo-tab {
+            min-width: 0;
             min-height: 44px;
-            padding: 0 0.2rem;
+            padding: 0 0.35rem;
             border: 0;
             background: transparent;
             color: var(--text-muted);
             font-size: 0.78rem;
             font-weight: 650;
             line-height: 1.2;
+            overflow-wrap: break-word;
             cursor: pointer;
         }
 
@@ -356,8 +374,8 @@
 
         .demo-disclaimer {
             margin: 0.75rem 0 0;
-            color: #66717c;
-            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
         }
 
         .profile-intro {
@@ -491,10 +509,6 @@
         }
 
         .career-section-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 2rem;
             margin-bottom: 1.5rem;
         }
 
@@ -505,10 +519,10 @@
         }
 
         .career-section-heading p {
-            max-width: 48ch;
-            margin: 0;
+            max-width: 62ch;
+            margin: 0.45rem 0 0;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .project-grid {
@@ -735,14 +749,6 @@
             gap: 0.5rem;
         }
         
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #10b981;
-        }
-
         .close-chat {
             background: none;
             border: none;
@@ -815,6 +821,17 @@
             outline-offset: 3px;
         }
 
+        .chat-note {
+            padding: 0 1.5rem 0.85rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            line-height: 1.45;
+        }
+
+        .chat-note a {
+            color: var(--accent-cyan);
+        }
+
         .chat-input-area {
             padding: 1rem;
             border-top: 1px solid var(--border-color);
@@ -852,6 +869,19 @@
             width: 20px;
             height: 20px;
             fill: #000;
+        }
+
+        @media (max-width: 1040px) {
+            .hero-showcase {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 2rem;
+                min-height: 0;
+                margin-bottom: 3rem;
+            }
+
+            .demo-tabs {
+                grid-template-columns: repeat(auto-fit, minmax(7.4rem, 1fr));
+            }
         }
 
         @media (max-width: 600px) {
@@ -981,12 +1011,6 @@
                 grid-template-columns: minmax(0, 1fr);
             }
 
-            .career-section-heading {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 0.6rem;
-            }
-
             .project-grid {
                 grid-template-columns: minmax(0, 1fr);
             }
@@ -1022,9 +1046,9 @@
             </div>
         </div>
         <div class="nav-actions">
-            <div class="lang-switch">
-                <button class="lang-btn active" onclick="setLang('cs')" id="btn-cs">CS</button>
-                <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+            <div class="lang-switch" role="group" data-i18n-aria-label="lang_label" aria-label="Jazyk">
+                <button class="lang-btn active" onclick="setLang('cs')" id="btn-cs" aria-pressed="true" lang="cs">CS</button>
+                <button class="lang-btn" onclick="setLang('en')" id="btn-en" aria-pressed="false" lang="en">EN</button>
             </div>
             <button class="btn-primary" onclick="toggleChat()" aria-controls="chatContainer" aria-expanded="false" data-i18n-aria-label="chat_open" aria-label="Otevřít chat">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -1123,7 +1147,7 @@
 
         <section class="career-section" aria-labelledby="projectsTitle">
             <div class="career-section-heading">
-                <h2 id="projectsTitle" data-i18n="projects_title">Vybrané projekty</h2>
+                <h2 id="projectsTitle" data-i18n="projects_title">Vybrané zkušenosti</h2>
                 <p data-i18n="projects_intro">Tři oblasti, ve kterých propojuji návrh, rozhodování a dodávku.</p>
             </div>
             <div class="project-grid">
@@ -1135,12 +1159,12 @@
                 <article class="project-entry">
                     <h3 data-i18n="focus_energy_title">Energetika &amp; SAP transformace</h3>
                     <p class="project-role">ČEZ Distribuce</p>
-                    <p data-i18n="focus_energy_desc">Vedení architektury a koordinace závislostí transformačního programu napříč ERP, datovým skladem a digitálními portály.</p>
+                    <p data-i18n="focus_energy_desc">Stanovil jsem strategii nákupu zdrojů v objemu 1,5 mld. Kč pro největší SAP projekt v ČR v ČEZ Distribuci. V energetice jsem prosazoval přístup založený na standardu a koordinoval závislosti napříč ERP, datovým skladem a digitálními portály.</p>
                 </article>
                 <article class="project-entry">
                     <h3 data-i18n="focus_digital_title">Digitální obchod &amp; integrace</h3>
                     <p class="project-role">CERVA GROUP · Mitas · Trelleborg Group</p>
-                    <p data-i18n="focus_digital_desc">Průkopnická první implementace rozsáhlého nástroje z portfolia SAP s globálním dosahem. Převzal jsem odpovědnost za kompletní strategii řešení i realizaci: od práce s daty a návrhu mockupů až po dodání celého řešení.</p>
+                    <p data-i18n="focus_digital_desc">Vedl jsem první nasazení rozsáhlého nástroje z portfolia SAP s globálním dosahem. Odpovídal jsem za strategii řešení i realizaci, od práce s daty a návrhu mockupů až po dodání celého řešení.</p>
                 </article>
             </div>
         </section>
@@ -1155,7 +1179,7 @@
         
         <div class="capacity-banner">
             <h3 data-i18n="cap_title">Chybí vám zkušení IT specialisté?</h3>
-            <p data-i18n="cap_desc">Kromě mých vlastních architektonických kapacit dokáži díky letité praxi zajistit prověřené IT experty – od seniorních vývojářů přes SAP konzultanty, datové inženýry až po krizové projektové manažery.</p>
+            <p data-i18n="cap_desc">Vedle vlastních konzultačních služeb mohu díky dlouholeté praxi zajistit prověřené IT specialisty napříč rolemi – od seniorních vývojářů a SAP konzultantů po datové inženýry a krizové projektové manažery.</p>
             <button class="btn-primary btn-large" onclick="openChatWithSuggestion('cap')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
                 <span data-i18n="cap_btn">Poptat expertní kapacity</span>
@@ -1195,7 +1219,6 @@
         <div class="chat-container" id="chatContainer" role="region" aria-labelledby="chatTitle">
             <div class="chat-header">
                 <div class="chat-header-title">
-                    <div class="status-dot"></div>
                     <span id="chatTitle" data-i18n="chat_title">Kika Solutions Asistent</span>
                 </div>
                 <button class="close-chat" type="button" onclick="toggleChat()" data-i18n-aria-label="chat_close" aria-label="Zavřít chat">✕</button>
@@ -1207,6 +1230,10 @@
                 <button class="suggestion-chip" type="button" onclick="sendSuggestion(translations[currentLang].chip_3)" data-i18n="chip_3">Enterprise Architektura</button>
                 <button class="suggestion-chip" type="button" onclick="sendSuggestion(translations[currentLang].chip_4)" data-i18n="chip_4">Business analýza</button>
             </div>
+            <p class="chat-note">
+                <span data-i18n="chat_note">Zprávy se ukládají, aby na ně šlo navázat.</span>
+                <a href="#privacy" data-i18n="chat_note_link" onclick="closeChatForPrivacy()">Více o zpracování údajů</a>
+            </p>
             <div class="chat-input-area">
                 <input type="text" id="chatInput" placeholder="Napište zprávu nebo zanechte kontakt..." data-i18n-placeholder="chat_input" data-i18n-aria-label="chat_input" aria-label="Napište zprávu nebo zanechte kontakt..." onkeypress="handleKeyPress(event)">
                 <button type="button" onclick="sendMessage()" data-i18n-aria-label="chat_send" aria-label="Odeslat zprávu">
@@ -1219,15 +1246,12 @@
         </button>
     </div>
 
-    <!-- FIREBASE COMPAT LIBRARIES -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
     <script>
         // --- MULTILANGUAGE DICTIONARY ---
         const translations = {
             cs: {
+                meta_description: "Nezávislá IT architektura, data a transformace. Pomáhám vedení firem poznat, co v IT podporuje byznys, a modernizovat bez rozbití systémů, které fungují.",
+                lang_label: "Jazyk",
                 nav_chat: "Konzultovat s asistentem",
                 hero_kicker: "Nezávislá IT architektura · data · transformace",
                 hero_title: "IT architektura, která pomáhá byznysu rozhodovat.",
@@ -1293,7 +1317,7 @@
                 focus_energy_title: "Energetika &amp; SAP transformace",
                 focus_energy_desc: "Stanovil jsem strategii nákupu zdrojů v objemu 1,5 mld. Kč pro největší SAP projekt v ČR v ČEZ Distribuci. V energetice jsem prosazoval přístup založený na standardu a koordinoval závislosti napříč ERP, datovým skladem a digitálními portály.",
                 focus_digital_title: "Digitální obchod &amp; integrace",
-                focus_digital_desc: "Průkopnická první implementace rozsáhlého nástroje z portfolia SAP s globálním dosahem. Převzal jsem odpovědnost za kompletní strategii řešení i realizaci: od práce s daty a návrhu mockupů až po dodání celého řešení.",
+                focus_digital_desc: "Vedl jsem první nasazení rozsáhlého nástroje z portfolia SAP s globálním dosahem. Odpovídal jsem za strategii řešení i realizaci, od práce s daty a návrhu mockupů až po dodání celého řešení.",
                 language_short: "<strong>CZ</strong> rodilý · <strong>EN</strong> C1 · <strong>DE</strong> pasivně",
                 cap_title: "Chybí vám zkušení IT specialisté?",
                 cap_desc: "Vedle vlastních konzultačních služeb mohu díky dlouholeté praxi zajistit prověřené IT specialisty napříč rolemi – od seniorních vývojářů a SAP konzultantů po datové inženýry a krizové projektové manažery.",
@@ -1306,6 +1330,8 @@
                 chat_close: "Zavřít chat",
                 chat_send: "Odeslat zprávu",
                 chat_messages: "Zprávy chatu",
+                chat_note: "Zprávy se ukládají, aby na ně šlo navázat.",
+                chat_note_link: "Více o zpracování údajů",
                 privacy_link: "Informace o zpracování údajů",
                 privacy_title: "Informace o zpracování údajů z chatu",
                 privacy_storage: "<strong>Správce a chat:</strong> Ing. Jiří Kika, IČO 24513083, fyzická osoba podnikající dle živnostenského zákona. Zprávy a ID relace uchováváme ve Firebase Firestore 180 dní od vytvoření. TTL je maže obvykle do 24 hodin po uplynutí lhůty.",
@@ -1316,21 +1342,25 @@
                 chip_2: "Data Governance",
                 chip_3: "Enterprise Architektura",
                 chip_4: "Business analýza",
-                bot_intro: "Dobrý den, jsem asistent Jiřího Kiky. Potřebujete zefektivnit IT architekturu, zrevidovat licence, probrat řízení projektu nebo hledáte expertní kapacity?",
-                bot_contact_req: "Abychom vám mohli připravit konkrétní rozvahu nebo nezávaznou nabídku, zanechte mi prosím váš e-mail nebo telefon.",
-                bot_contact_ack: "Děkuji, kontakt ({contact}) jsem v pořádku zaznamenal a předal přímo Jiřímu Kikovi. Máte ještě jakýkoliv dotaz k auditu, architektuře nebo kapacitám?",
-                bot_email_failed: "Kontakt jsem uložil do chatu, ale e-mailové upozornění se nepodařilo odeslat. Napište prosím přímo na info@kika-solutions.com.",
+                bot_intro: "Dobrý den, jsem asistent Jiřího Kiky. Napište, co řešíte: revizi IT, architekturu, data, SAP, řízení projektu, nebo lidi do týmu.",
+                bot_unknown: "Tohle neumím zařadit do jedné z oblastí. Stačí napsat, jestli jde o revizi IT, architekturu, data, SAP, projekt, nebo kapacity. E-mail nebo telefon přidejte, až budete chtít, aby se Jiří ozval.",
+                bot_contact_req: "Až budete chtít nezávazně pokračovat, nechte sem e-mail nebo telefon. Jiří se ozve.",
+                bot_contact_ack: "Děkuji, kontakt ({contact}) si ukládám. Jiří se ozve.",
+                bot_email_failed: "Kontakt zůstává v konverzaci, e-mailové upozornění se ale neodeslalo. Napište prosím přímo na info@kika-solutions.com.",
                 bot_email_sent: "E-mailové upozornění s vaším kontaktem bylo odesláno.",
-                bot_fallback: "Rozumím. Informaci doplňuji k vaší poptávce. Jiří Kika vás bude brzy kontaktovat.",
-                bot_audit_md: "Audit IT pro středně velký tým (5-15 osob) obvykle zabere 8 až 16 MD podle rozsahu systémů a stavu dokumentace. Zahrnuje revizi licenčních nákladů (běžně identifikujeme 20-30% prostor pro úspory), zmapování technického dluhu a konkrétní TO-BE roadmapu.",
-                bot_audit_general: "IT Audit provádíme jako nezávislou revizi současného stavu (AS-IS). Zmapujeme zbytečně placené licence, zastaralý či předimenzovaný HW a neefektivní procesy. Cílem je uvolnit rozpočet pro smysluplnou modernizaci a zachovat funkční legacy systémy levně a bezpečně.",
-                bot_data_general: "V oblasti Data Governance řešíme jednotnou pravdu o datech. Navrhujeme moderní Azure Data Lakehouse architekturu, Databricks a spolehlivé integrace (např. EDI), aby mělo vedení firmy k dispozici čistá data pro reporting a AI bez ručních excelovských zásahů.",
-                bot_arch_general: "Enterprise architekturu stavíme na standardech TOGAF 9 a ITIL. Sladíme byznys strategii s možnostmi IT, řídíme technický dluh a poskytujeme nezávislý dohled nad implementacemi (včetně SAP S/4HANA), abyste se vyhnuli vendor-locku.",
-                bot_ba_general: "Business analýza pomáhá převést obchodní potřeby do srozumitelných a ověřitelných požadavků. Zmapujeme procesy, sladíme očekávání klíčových lidí a určíme priority tak, aby IT změna řešila skutečný problém.",
-                bot_cap_general: "Díky rozsáhlé síti seniorních IT kontaktů zajišťujeme prověřené experty – od enterprise architektů, přes senior vývojáře a data engineery, až po SAP konzultanty a krizové PM.",
-                bot_pushback: "Rozumím, omlouvám se. Můžete kontakt napsat přímo sem, až se vám to bude hodit, případně se můžete kdykoliv přímo spojit s Jiřím Kikou na telefonu +420 732 263 184."
+                bot_fallback: "Doplnil jsem to k vaší zprávě. Jiří se vám ozve na kontakt, který jste tu nechal.",
+                bot_audit_md: "U středně velkého týmu se rozsah revize odvíjí od systémů a dokumentace. Bývá to několik dní až nižší desítky člověkodnů: licence, technický dluh a návrh dalších kroků. Přesný odhad dává smysl až podle vašeho prostředí.",
+                bot_audit_general: "Revize IT je nezávislý pohled na současný stav. Jiří pojmenuje licence, které se platí zbytečně, předimenzovaný hardware a procesy, které brzdí. Cílem je uvolnit rozpočet na smysluplnou změnu a nechat funkční systémy běžet dál.",
+                bot_data_general: "U dat Jiří řeší, aby firma měla jednu spolehlivou verzi pravdy. Navrhuje datovou architekturu, včetně Azure Data Lakehouse a Databricks, a integrace jako EDI, aby vedení reportovalo z ověřených dat.",
+                bot_arch_general: "Podnikovou architekturu Jiří staví na TOGAF 9. Slaďuje byznys s tím, co IT unese, pojmenuje technický dluh a hlídá, aby změna neskončila závislostí na jednom dodavateli.",
+                bot_sap_general: "U SAP Jiří dělá architektonický dohled nad programy, včetně S/4HANA a ECC. Hlídá rozsah, závislosti a úpravy standardu, aby implementace zůstala řiditelná.",
+                bot_ba_general: "Business analýza převádí obchodní potřebu do zadání, které jde ověřit. Jiří mapuje procesy, sladí očekávání a pomůže určit, co má prioritu.",
+                bot_cap_general: "Vedle vlastní práce umí Jiří sehnat prověřené lidi: architekty, seniorní vývojáře, datové inženýry, SAP konzultanty i projektové manažery.",
+                bot_pushback: "V pořádku, kontakt teď psát nemusíte. Až se vám to bude hodit, nechte ho sem, nebo zavolejte Jiřímu na +420 732 263 184."
             },
             en: {
+                meta_description: "Independent IT architecture, data, and transformation. I help leadership teams see what supports the business and modernize without breaking systems that still work.",
+                lang_label: "Language",
                 nav_chat: "Consult with Assistant",
                 hero_kicker: "Independent IT architecture · data · transformation",
                 hero_title: "Enterprise IT that helps your business make better decisions.",
@@ -1396,7 +1426,7 @@
                 focus_energy_title: "Energy &amp; SAP transformation",
                 focus_energy_desc: "Defined the sourcing strategy for resources worth CZK 1.5 billion for the largest SAP project in the Czech Republic at ČEZ Distribuce. In the energy sector, I promoted a standard-based approach and coordinated dependencies across ERP, the data warehouse, and digital portals.",
                 focus_digital_title: "Digital commerce &amp; integration",
-                focus_digital_desc: "A pioneering first implementation of a large-scale SAP product with global reach. I took ownership of the complete solution strategy and delivery, from data work and mockup design through end-to-end implementation.",
+                focus_digital_desc: "I led the first rollout of a large-scale SAP product with global reach. I owned the solution strategy and delivery, from data work and mockup design through the complete implementation.",
                 language_short: "<strong>CZ</strong> native · <strong>EN</strong> C1 · <strong>DE</strong> passive",
                 cap_title: "Missing experienced IT specialists?",
                 cap_desc: "Alongside my consulting work, I can draw on years of experience to source trusted IT specialists across roles – from senior developers and SAP consultants to data engineers and project turnaround leads.",
@@ -1409,6 +1439,8 @@
                 chat_close: "Close chat",
                 chat_send: "Send message",
                 chat_messages: "Chat messages",
+                chat_note: "Messages are stored so they can be followed up.",
+                chat_note_link: "More about data processing",
                 privacy_link: "Data processing information",
                 privacy_title: "Chat data processing information",
                 privacy_storage: "<strong>Controller and chat:</strong> Ing. Jiří Kika, company ID 24513083, a self-employed natural person under the Trade Licensing Act. Messages and the session ID are kept in Firebase Firestore for 180 days from creation. TTL typically deletes them within 24 hours after expiry.",
@@ -1419,23 +1451,26 @@
                 chip_2: "Data Governance",
                 chip_3: "Enterprise Architecture",
                 chip_4: "Business Analysis",
-                bot_intro: "Hello, I am Jiří Kika's assistant. Do you need to streamline your IT architecture, review licenses, discuss project management, or are you looking for expert capacities?",
-                bot_contact_req: "To prepare a specific estimate or proposal, please leave your email or phone number here in the chat.",
-                bot_contact_ack: "Thank you, I have successfully recorded your contact ({contact}) and forwarded it to Jiří Kika. Do you have any specific questions about the audit, IT, or capacities?",
-                bot_email_failed: "Your contact was saved in the chat, but the email notification could not be sent. Please contact info@kika-solutions.com directly.",
+                bot_intro: "Hello, I am Jiří Kika's assistant. Tell me what you are dealing with: an IT review, architecture, data, SAP, a project, or people for your team.",
+                bot_unknown: "I cannot place that in one of the areas I cover. Say whether it is an IT review, architecture, data, SAP, a project, or extra capacity. Add an email or phone number when you want Jiří to get back to you.",
+                bot_contact_req: "When you want to continue without obligation, leave an email or phone number here. Jiří will get back to you.",
+                bot_contact_ack: "Thank you. I am keeping {contact} with this conversation. Jiří will get back to you.",
+                bot_email_failed: "Your contact stays in this conversation, but the email notification could not be sent. Please write directly to info@kika-solutions.com.",
                 bot_email_sent: "The email notification with your contact details has been sent.",
-                bot_fallback: "Understood. I am adding this information to your inquiry. Jiří Kika will contact you at the provided contact details soon.",
-                bot_audit_md: "An IT audit for a medium-sized team (5-15 people) typically takes 8 to 16 MDs depending on system complexity and documentation. It includes license cost reviews (identifying 20-30% potential savings), technical debt mapping, and a concrete TO-BE roadmap.",
-                bot_audit_general: "We conduct IT Audits as independent AS-IS evaluations. We identify wasteful software licenses, oversized hardware, and bottlenecks. Our goal is to free up your budget for meaningful modernization while keeping legacy services cheap and stable.",
-                bot_data_general: "In Data Governance, we establish a single source of truth. We design Azure Data Lakehouse architectures, Databricks pipelines, and EDI integrations so leadership has accurate data without manual Excel manipulations.",
-                bot_arch_general: "We build Enterprise Architecture upon TOGAF 9 and ITIL frameworks. We align business strategy with IT capabilities, mitigate technical debt, and oversee large enterprise systems (like SAP S/4HANA) to prevent vendor lock-in.",
-                bot_ba_general: "Business analysis translates business needs into clear, verifiable requirements. We map processes, align key stakeholders, and set priorities so IT changes address the actual problem.",
-                bot_cap_general: "Through a vetted network of senior IT professionals, we supply seasoned experts – enterprise architects, senior engineers, data specialists, SAP consultants, and crisis PMs.",
-                bot_pushback: "I understand, my apologies. You can share your contact whenever convenient, or reach Jiří Kika directly by phone at +420 732 263 184."
+                bot_fallback: "I have added that to your message. Jiří will get back to you at the contact you left here.",
+                bot_audit_md: "For a mid-sized team, the size of a review depends on the systems and the documentation. It is often a few days to the low tens of person-days: licenses, technical debt, and the next steps. A precise estimate only makes sense once your environment is clear.",
+                bot_audit_general: "An IT review is an independent look at the current state. Jiří names licenses you are paying for without needing them, oversized hardware, and processes that slow the business down. The aim is to free budget for useful change and keep working systems running.",
+                bot_data_general: "On data, Jiří works toward one reliable version of the truth. He designs the data architecture, including Azure Data Lakehouse and Databricks, and integrations such as EDI, so leadership reports from checked data.",
+                bot_arch_general: "Jiří builds enterprise architecture on TOGAF 9. He aligns the business with what IT can actually carry, names the technical debt, and watches that a change does not end in dependence on a single vendor.",
+                bot_sap_general: "On SAP, Jiří provides architectural oversight of programmes, including S/4HANA and ECC. He watches scope, dependencies, and changes to the standard so the implementation stays manageable.",
+                bot_ba_general: "Business analysis turns a business need into a brief that can be checked. Jiří maps processes, aligns expectations, and helps decide what has priority.",
+                bot_cap_general: "Alongside his own work, Jiří can find trusted people: architects, senior developers, data engineers, SAP consultants, and project managers.",
+                bot_pushback: "That is fine, you do not have to leave a contact now. When it suits you, leave it here, or call Jiří at +420 732 263 184."
             }
         };
 
-        let currentLang = localStorage.getItem('lang') || 'cs';
+        let currentLang = 'cs';
+        try { currentLang = localStorage.getItem('lang') || 'cs'; } catch (error) {}
         let currentDemoMode = 'analysis';
 
         function setDemoMode(mode) {
@@ -1458,11 +1493,15 @@
         }
 
         function setLang(lang) {
+            if (!translations[lang]) return;
             currentLang = lang;
-            localStorage.setItem('lang', lang);
-            
+            try { localStorage.setItem('lang', lang); } catch (error) {}
+            document.documentElement.lang = lang === 'en' ? 'en' : 'cs';
+
             document.getElementById('btn-cs').classList.toggle('active', lang === 'cs');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-cs').setAttribute('aria-pressed', String(lang === 'cs'));
+            document.getElementById('btn-en').setAttribute('aria-pressed', String(lang === 'en'));
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1479,10 +1518,17 @@
                 if (translations[lang][key]) el.setAttribute('aria-label', translations[lang][key]);
             });
 
+            const description = translations[lang].meta_description;
+            if (description) {
+                document.getElementById('metaDescription').setAttribute('content', description);
+                document.getElementById('ogDescription').setAttribute('content', description);
+                document.getElementById('twitterDescription').setAttribute('content', description);
+                document.getElementById('ogLocale').setAttribute('content', lang === 'en' ? 'en_US' : 'cs_CZ');
+            }
+
             setDemoMode(currentDemoMode);
         }
 
-        // --- FIREBASE SETUP ---
         const firebaseConfig = {
             apiKey: "AIzaSyC1Dh2JbV6UmpvRqHiR-FrQyRXFYmfzRWA",
             authDomain: "kika-chat.firebaseapp.com",
@@ -1491,31 +1537,84 @@
             messagingSenderId: "128646324567",
             appId: "1:128646324567:web:0d4eaaba7a05ec41f39e12"
         };
+        const EMAILJS_PUBLIC_KEY = "djBttv98Jx1zxTWaI";
+        const EMAILJS_SERVICE = "service_kc6r25e";
+        const EMAILJS_TEMPLATE = "template_za7h1om";
 
-        emailjs.init({ publicKey: "djBttv98Jx1zxTWaI" });
+        let db = null;
+        let firebasePromise = null;
+        let emailjsPromise = null;
+        const sessionId = "chat_" + Date.now() + "_" + Math.random().toString(36).slice(2, 7);
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const sessionId = "chat_" + Date.now() + "_" + Math.random().toString(36).substr(2, 5);
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const existing = document.querySelector('script[src="' + src + '"]');
+                if (existing) {
+                    if (existing.dataset.loaded === 'true') resolve();
+                    else {
+                        existing.addEventListener('load', () => resolve(), { once: true });
+                        existing.addEventListener('error', () => reject(new Error(src)), { once: true });
+                    }
+                    return;
+                }
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = true;
+                script.onload = () => {
+                    script.dataset.loaded = 'true';
+                    resolve();
+                };
+                script.onerror = () => reject(new Error(src));
+                document.body.appendChild(script);
+            });
+        }
+
+        function ensureFirebase() {
+            if (!firebasePromise) {
+                firebasePromise = loadScript('https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js')
+                    .then(() => loadScript('https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js'))
+                    .then(() => {
+                        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+                        db = firebase.firestore();
+                    })
+                    .catch(error => {
+                        firebasePromise = null;
+                        throw error;
+                    });
+            }
+            return firebasePromise;
+        }
+
+        function ensureEmailJs() {
+            if (!emailjsPromise) {
+                emailjsPromise = loadScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js')
+                    .then(() => {
+                        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                    })
+                    .catch(error => {
+                        emailjsPromise = null;
+                        throw error;
+                    });
+            }
+            return emailjsPromise;
+        }
 
         function logChatToFirebase(sender, text) {
-            try {
+            ensureFirebase().then(() => {
                 const expirationDate = new Date();
                 expirationDate.setDate(expirationDate.getDate() + 180);
-
-                db.collection("chat_history").add({
+                return db.collection('chat_history').add({
                     sessionId: sessionId,
                     sender: sender,
                     message: text,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     expireAt: firebase.firestore.Timestamp.fromDate(expirationDate)
                 });
-            } catch (error) {
-                console.error("Firebase log error:", error);
-            }
+            }).catch(error => {
+                console.error('Firebase log error:', error);
+            });
         }
 
-        // --- CHAT ENGINE S KONTEXTOVOU PAMĚTÍ ---
         const chatContainer = document.getElementById('chatContainer');
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
@@ -1524,6 +1623,8 @@
         const chatOpenButtons = document.querySelectorAll('[aria-controls="chatContainer"]');
         let chatOpen = false;
         let hasContact = false;
+        let contactPromptShown = false;
+        let contactPromptTimer = null;
         let emailNotificationSent = false;
         let emailNotificationInProgress = false;
         let emailNotificationPromise = Promise.resolve(false);
@@ -1548,12 +1649,14 @@
             if (event.key === 'Escape' && chatOpen) toggleChat();
         });
 
+        function closeChatForPrivacy() {
+            if (chatOpen) toggleChat();
+        }
+
         function openChatWithSuggestion(type) {
             if (!chatOpen) toggleChat();
             setTimeout(() => {
-                if (type === 'cap') {
-                    sendSuggestion(translations[currentLang].cap_chip);
-                }
+                if (type === 'cap') sendSuggestion(translations[currentLang].cap_chip);
             }, 300);
         }
 
@@ -1576,22 +1679,91 @@
         }
 
         function sendEmailNotification(userMessage, contactInfo) {
-            try {
-                return emailjs.send("service_kc6r25e", "template_za7h1om", {
+            return ensureEmailJs()
+                .then(() => emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
                     message: userMessage,
                     contact_info: contactInfo,
                     session_id: sessionId
-                }).then(response => {
+                }))
+                .then(response => {
                     console.log('Email úspěšně odeslán!', response.status, response.text);
                     return true;
-                }).catch(error => {
+                })
+                .catch(error => {
                     console.error('Chyba odeslání emailu:', error);
                     return false;
                 });
-            } catch (error) {
-                console.error('Chyba odeslání emailu:', error);
-                return Promise.resolve(false);
+        }
+
+        function extractEmail(text) {
+            const match = text.match(/(?:^|[^\w.+-])([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})(?![A-Z0-9-])/i);
+            return match ? match[1] : null;
+        }
+
+        function extractPhone(text) {
+            const re = /(?:\+|00)?\d(?:[ \t()./-]{0,3}\d){7,16}/g;
+            let match;
+            while ((match = re.exec(text)) !== null) {
+                const raw = match[0];
+                const digits = raw.replace(/\D/g, '');
+                const international = (digits.length === 12 && digits.startsWith('420'))
+                    || (digits.length === 14 && digits.startsWith('00420'));
+                const national = digits.length === 9 && !/^[01]/.test(digits);
+                if (!international && !national) continue;
+
+                const groups = raw.replace(/^\+/, '').trim().split(/[\s()./-]+/).filter(Boolean);
+                if (groups.length >= 3 && groups.slice(1).every(group => /^0+$/.test(group))) continue;
+
+                const around = text.slice(Math.max(0, match.index - 16), match.index + raw.length + 16).toLowerCase();
+                if (/(kč|kc\b|czk|eur|usd|€|\$|mld|milion|mil\.)/.test(around)) continue;
+                return raw.trim();
             }
+            return null;
+        }
+
+        function detectTopics(text) {
+            const value = text.toLowerCase();
+            const has = (pattern) => pattern.test(value);
+            return {
+                md: has(/\bmd\b/) || has(/člověkodn/) || has(/\bmandays?\b/) || has(/\bman-days?\b/) || has(/\bodhad\b/) || has(/\bestimate\b/),
+                sap: has(/\bsap\b/) || has(/s\/4hana/) || has(/\becc\b/),
+                ba: has(/business anal/) || has(/byznys anal/) || has(/požadavk/) || has(/\brequirements?\b/) || has(/\bprocess(?:es)?\b/) || has(/procesní/) || has(/\bprocesů/) || has(/\bprocesy\b/) || has(/\bproces\b/),
+                data: has(/\bdata\b/) || has(/\bmetadata\b/) || has(/\bdatov/) || has(/\bgovernance\b/) || has(/\bdatabricks\b/) || has(/\bdwh\b/) || has(/\betl\b/) || has(/\bwarehouse\b/),
+                arch: has(/architekt/) || has(/\barchitect/) || has(/\btogaf\b/) || has(/\broadmap\b/),
+                audit: has(/\baudit/) || has(/licenc/) || has(/licens/),
+                cap: has(/kapacit/) || has(/\bexpert/) || has(/specialist/) || has(/\btým/) || has(/\bteam\b/)
+            };
+        }
+
+        function hasAnyTopic(topics) {
+            return Object.values(topics).some(Boolean);
+        }
+
+        function topicReply(topics, copy) {
+            if (topics.sap) return copy.bot_sap_general;
+            if (topics.ba) return copy.bot_ba_general;
+            if (topics.data) return copy.bot_data_general;
+            if (topics.arch) return copy.bot_arch_general;
+            if (topics.audit || topics.md) return topics.md ? copy.bot_audit_md : copy.bot_audit_general;
+            if (topics.cap) return copy.bot_cap_general;
+            return null;
+        }
+
+        function refusesContact(text, topics) {
+            if (hasAnyTopic(topics)) return false;
+            const value = text.toLowerCase().trim();
+            if (/^(ne|nechci|nemám|nemam|nebudu)[.!]?$/.test(value)) return true;
+            return /(nechci|nemám|nemam|nebudu|radši ne|raději ne)/.test(value)
+                && /(kontakt|e-?mail|mail|telefon|číslo|cislo|volat|zavol|phone)/.test(value);
+        }
+
+        function maybeAskContact(copy) {
+            if (hasContact || contactPromptShown) return;
+            contactPromptShown = true;
+            contactPromptTimer = setTimeout(() => {
+                if (hasContact) return;
+                appendMessage('Asistent', copy.bot_contact_req, 'assistant');
+            }, 900);
         }
 
         function sendMessage() {
@@ -1602,104 +1774,48 @@
             chatInput.value = '';
             chatSuggestions.style.display = 'none';
 
-            // 1. Detekce kontaktů (email nebo telefon)
-            const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-            const phoneMatch = text.match(/(\+?\d{3})?[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{3}/);
-            const contactMatch = emailMatch || phoneMatch;
-            if (contactMatch && !emailNotificationSent && !emailNotificationInProgress) {
+            const email = extractEmail(text);
+            const phone = extractPhone(text);
+            const contact = email || phone;
+            if (contact) {
+                clearTimeout(contactPromptTimer);
+                contactPromptShown = true;
+            }
+            if (contact && !emailNotificationSent && !emailNotificationInProgress) {
                 emailNotificationInProgress = true;
-                emailNotificationPromise = sendEmailNotification(text, contactMatch[0]);
+                emailNotificationPromise = sendEmailNotification(text, contact);
                 emailNotificationPromise.then(sent => {
                     emailNotificationInProgress = false;
-                    if (sent) {
-                        emailNotificationSent = true;
-                        if (hasContact) appendMessage('Asistent', translations[currentLang].bot_email_sent, 'assistant');
-                    } else {
-                        appendMessage('Asistent', translations[currentLang].bot_email_failed, 'assistant');
-                    }
+                    if (sent) emailNotificationSent = true;
+                    else appendMessage('Asistent', translations[currentLang].bot_email_failed, 'assistant');
                 });
             }
-            
-            // 2. Detekce témat
-            const lowerText = text.toLowerCase();
-            const asksForMD = lowerText.includes("md") || lowerText.includes("mandays") || lowerText.includes("odhad") || lowerText.includes("estimate") || lowerText.includes("5 - 15") || lowerText.includes("5-15");
-            const asksForAudit = lowerText.includes("audit") || lowerText.includes("licenc");
-            const asksForData = lowerText.includes("data") || lowerText.includes("sklad") || lowerText.includes("governance") || lowerText.includes("databricks");
-            const asksForArch = lowerText.includes("architekt") || lowerText.includes("togaf") || lowerText.includes("sap");
-            const asksForBusinessAnalysis = lowerText.includes("business anal") || lowerText.includes("business analysis") || lowerText.includes("byznys anal") || lowerText.includes("proces") || lowerText.includes("požadavk") || lowerText.includes("requirements");
-            const asksForCap = lowerText.includes("kapacit") || lowerText.includes("expert") || lowerText.includes("specialist") || lowerText.includes("tým") || lowerText.includes("team");
-            const pushback = lowerText.includes("nebude") || lowerText.includes("nemá") || lowerText.includes("nemam") || lowerText.includes("nechci");
 
             setTimeout(() => {
-                const t = translations[currentLang];
+                const copy = translations[currentLang];
+                const topics = detectTopics(text);
 
-                // A) Uživatel zadal kontakt
-                if ((emailMatch || phoneMatch) && !hasContact) {
+                if (contact && !hasContact) {
                     hasContact = true;
-                    const contactDetail = emailMatch ? emailMatch[0] : phoneMatch[0];
-                    emailNotificationPromise.then(sent => {
-                        if (sent) {
-                            const ackMsg = t.bot_contact_ack.replace('{contact}', contactDetail);
-                            appendMessage('Asistent', ackMsg, 'assistant');
-                        }
-                    });
+                    contactPromptShown = true;
+                    clearTimeout(contactPromptTimer);
+                    appendMessage('Asistent', copy.bot_contact_ack.replace('{contact}', contact), 'assistant');
                     return;
                 }
 
-                // B) Reakce na odmlouvání ("nemá email")
-                if (pushback && !hasContact) {
-                    appendMessage('Asistent', t.bot_pushback, 'assistant');
+                const reply = topicReply(topics, copy);
+                if (reply) {
+                    appendMessage('Asistent', reply, 'assistant');
+                    maybeAskContact(copy);
                     return;
                 }
 
-                // C) MD odhad auditu
-                if (asksForMD) {
-                    appendMessage('Asistent', t.bot_audit_md, 'assistant');
-                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
+                if (refusesContact(text, topics) && !hasContact) {
+                    appendMessage('Asistent', copy.bot_pushback, 'assistant');
                     return;
                 }
 
-                // D) Audit & licence (včetně kliknutí na čip)
-                if (asksForAudit) {
-                    appendMessage('Asistent', t.bot_audit_general, 'assistant');
-                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
-                    return;
-                }
-
-                // E) Data Governance & Sklady
-                if (asksForData) {
-                    appendMessage('Asistent', t.bot_data_general, 'assistant');
-                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
-                    return;
-                }
-
-                // F) Enterprise Architektura
-                if (asksForArch) {
-                    appendMessage('Asistent', t.bot_arch_general, 'assistant');
-                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
-                    return;
-                }
-
-                // G) Business analysis
-                if (asksForBusinessAnalysis) {
-                    appendMessage('Asistent', t.bot_ba_general, 'assistant');
-                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
-                    return;
-                }
-
-                // H) Expertní kapacity
-                if (asksForCap) {
-                    appendMessage('Asistent', t.bot_cap_general, 'assistant');
-                    if (!hasContact) setTimeout(() => appendMessage('Asistent', t.bot_contact_req, 'assistant'), 1200);
-                    return;
-                }
-
-                // I) Standardní fallback
-                if (hasContact) {
-                    appendMessage('Asistent', t.bot_fallback, 'assistant');
-                } else {
-                    appendMessage('Asistent', t.bot_contact_req, 'assistant');
-                }
+                appendMessage('Asistent', hasContact ? copy.bot_fallback : copy.bot_unknown, 'assistant');
             }, 700);
         }
 
